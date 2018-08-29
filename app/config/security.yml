@@ -43,15 +43,15 @@ security:
                 check_path: /login
                 username_parameter: user_login[pseudo]
                 password_parameter: user_login[password]
-                
+
             logout:
                 path: /logout
                 target: /
-            
-              
+
+
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-            
-    #access control:    
+
+    #access control:
     #    {path:"/admin", roles:"ROLE_ADMIN"}
