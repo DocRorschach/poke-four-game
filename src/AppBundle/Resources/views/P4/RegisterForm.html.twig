@@ -1,0 +1,26 @@
+{% extends '@App/P4/index.html.twig' %}
+{% block title %}
+    {{ parent() }} - P4
+{% endblock %}
+
+{% block App_body %}
+    <div style="margin-top:60px"></div>
+    <div style="text-align: center;">
+        <img src="../image/pokefour.png" alt="Main_picture" />
+        <div style="margin-top:30px"></div>
+        <h1> Register In</h1>
+        <div style="margin-top:30px"></div>
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_row(form.nom, {'attr': {'class': 'form-control-sm'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.pseudo, {'attr': {'class': 'form-control-sm'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.password, {'attr': {'class': 'form-control-sm'}}) }}
+        </div>
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}
