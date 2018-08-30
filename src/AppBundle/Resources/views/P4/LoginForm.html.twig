@@ -6,7 +6,7 @@
 {% block App_body %}
     <div style="margin-top:60px"></div>
     <div style="text-align: center;">
-        <img src="../image/pokefour.png" alt="Main_picture" />
+        <img src="{{ asset('bundles/app/images/logopage.png')}}" alt="Main_picture" />
         <div class="container" style="text-align: center;">
             <h2> Welcome in the P4 world</h2>
             <div style="margin-top:60px"></div>
@@ -23,7 +23,7 @@
                 </div>
                 {{ form_end(form) }}
             </div>
-            <a class="nav-link" href="{{ path('register')}}" id="aReg">New account ? Register in</a>
+            <a class="nav-link" href="{{ path('register')}}" id="aReg">New account ? Please register</a>
 
         </div>
     </div>

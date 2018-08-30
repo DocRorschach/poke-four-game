@@ -43,6 +43,7 @@ security:
                 check_path: /login
                 username_parameter: user_login[pseudo]
                 password_parameter: user_login[password]
+                default_target_path: lobby
 
             logout:
                 path: /logout

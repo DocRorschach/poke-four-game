@@ -1,0 +1,67 @@
+{% extends '@App/P4/index.html.twig' %}
+
+{% block body %}
+
+    <div style="margin-top:60px"></div>
+    <div style="text-align: center;">
+        <div class="container" style="text-align: center;">
+            <h2 style="border: solid; padding: 15px"><b>Rules of the PokéFour</b></h2>
+            <div style="margin-top:100px"></div>
+            
+            <div style="margin-top:50px">
+                <div  style="margin-bottom:5px"><b>Description :</b></div>
+                </br>
+                This game is played on a vertical board wich has seven columns and six rows. 
+                Each column has a hole in the upper part of the board, where pieces are introduced. 
+                There is a window for every square, so that pieces can be seen from both sides.
+                In short, it´s a vertical board with 42 windows distributed in 6 rows and 7 columns.
+                Both players have a set of 21 chips (like pokéballs), each of them has a different skin based 
+                on the famous Pokémon item. The board is empty at the start of the game.
+            </div>
+            <div style="margin-top:50px">
+            <img src="{{ asset('bundles/app/images/poke2.png') }}" alt="Pokeballs2" />
+            </div>
+            <div style="margin-top:50px">
+                <div  style="margin-bottom:5px"><b>Objective :</b></div>
+                </br>
+                    The aim for both players is to make a straight line of four (or more in extreme mode ) pieces, 
+                    the line can be vertical, horizontal or diagonal. Upon the creation of the game lobby
+                    one player will have to chose the score required to win the game. 
+                    When one of the two players reach that score, the game ends, and the player wins. 
+                    They will then have a choice to restart the same game
+                    or to up the difficulty with the extreme mode.
+            </div>
+            <div style="margin-top:50px">
+            <img src="{{ asset('bundles/app/images/poke3.png') }}" alt="Pokeballs3" />
+            </div>
+            <div style="margin-top:50px">
+                <div  style="margin-bottom:5px"><b>How the game goes on :</b></div>
+                </br>    
+                    Before starting, the game will randomly decide which one will be the first to move his chip. 
+                    The moves are made alternatively, one by turn.
+                    Moves consists of placing new pieces on the board, pieces slide downwards from upper holes, 
+                    falling down to the last row or piling up on the last piece introduced in the same column. 
+                    So, in every turn the introduced piece may be placed at most on seven different squares.
+                    The winner is the first player who gets a straight line made with four own pieces and no gaps between them.
+            </div>
+            <div style="margin-top:30px"></div>
+            <div style="margin-top:50px">
+            <img src="{{ asset('bundles/app/images/poke4.png') }}" alt="Pokeballs4" />
+            </div>
+            <div style="margin-top:50px">
+                <div  style="margin-bottom:5px"><b>Extreme Mode :</b></div>
+                </br>
+                    What's new in this version of Connect 4 is the Extreme Mode, a new difficulty for the most
+                    experienced players. In this mode, some chips will have power ups (or not...) and will serve to
+                    up the thrill of the game, pushing you to be on the edge at all times. At the creation of the game,
+                    the owner can also choose how many chips you have to align to win : 4 like in classic, 5, 6, 7... or more
+                    if you dare. Don't worry, you will have a preview of your next chip on the lower left corner of the board
+                    to help you place it accordingly.
+            </div>
+            
+            
+        </div>
+    </div>
+
+{% endblock %}
+
