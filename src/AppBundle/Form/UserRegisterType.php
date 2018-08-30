@@ -14,7 +14,7 @@ class UserRegisterType extends UserLoginType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         //parent::buildForm($builder, $options);
-        $builder->add('nom', TextType::class)
+        $builder->add('firstname', TextType::class)
                 ->add('pseudo', TextType::class)
                 ->add('password', PasswordType::class)
                 ->add('save', SubmitType::class, array(

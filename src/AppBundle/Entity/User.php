@@ -23,9 +23,9 @@ class User implements UserInterface {
     protected $id;
 
     /**
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="firstname", type="string", length=255)
      */
-    protected $nom;
+    protected $firstname;
 
     /**
      * @ORM\Column(name="pseudo", type="string", length=255, unique=true)
@@ -47,25 +47,25 @@ class User implements UserInterface {
     }
 
     /**
-     * Set nom
+     * Set firstname
      *
-     * @param string $nom
+     * @param string $firstname
      *
      * @return User
      */
-    public function setNom($nom) {
-        $this->nom = $nom;
+    public function setFirstname($firstname) {
+        $this->firstname = $firstname;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get firstname
      *
      * @return string
      */
-    public function getNom() {
-        return $this->nom;
+    public function getFirstname() {
+        return $this->firstname;
     }
 
     /**
@@ -113,7 +113,7 @@ class User implements UserInterface {
     }
 
     public function eraseCredentials() {
-
+        
     }
 
     public function getRoles() {

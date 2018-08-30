@@ -6,7 +6,7 @@
 {% block App_body %}
     <div style="margin-top:60px"></div>
     <div style="text-align: center;">
-        <img src="../image/pokefour.png" alt="Main_picture" />
+        <img src="{{ asset('bundles/app/images/pokefour.png') }}" alt="Main_picture" />
         <div class="container" style="text-align: center;">
             <div style="margin-top:30px"></div>
             <h1> Register In</h1>
@@ -14,7 +14,7 @@
             <div class="row justify-content-center">
                 {{ form_start(form) }}
                 <div class="form-group">
-                    {{ form_row(form.nom, {'attr': {'class': 'form-control-sm'}}) }}
+                    {{ form_row(form.firstname, {'attr': {'class': 'form-control-sm'}}) }}
                 </div>
                 <div class="form-group">
                     {{ form_row(form.pseudo, {'attr': {'class': 'form-control-sm'}}) }}

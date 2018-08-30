@@ -10,7 +10,7 @@ use AppBundle\Form\UserRegisterType;
 use AppBundle\Form\UserLoginType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class P4Controller extends Controller {
+class UserP4Controller extends Controller {
 
     /**
      * @Route("/", name="home")
@@ -22,7 +22,7 @@ class P4Controller extends Controller {
 
     public function hydrate($aUser) {
         $oUser = new User();
-        $oUser->setNom($aUser['nom']);
+        $oUser->setFirstname($aUser['firstName']);
         $oUser->setPseudo($aUser['pseudo']);
         $oUser->setPassword($aUser['password']);
         return $oUser;
@@ -54,7 +54,7 @@ class P4Controller extends Controller {
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('@App/P4/RegisterForm.html.twig', [
+        return $this->render('@App/P4/registerform.html.twig', [
                     'form' => $oForm->createView()
         ]);
     }
@@ -77,7 +77,7 @@ class P4Controller extends Controller {
                 if ($oPasswordEncoder->isPasswordValid($oGetUserBDD, $oUser->getPassword())) {
                     $bValidPass = 'oui';
                     $oRequest->getSession()->set('user', $oUser);
-                    return $this->redirectToRoute('login');
+                    return $this->redirectToRoute('register');
                 } else {
                     $bValidPass = 'non';
                     echo'saisi incorrect';
@@ -87,7 +87,7 @@ class P4Controller extends Controller {
                 echo'saisi incorrect';
             }
         }
-        return $this->render('@App/P4/LoginForm.html.twig', [
+        return $this->render('@App/P4/loginform.html.twig', [
                     'form' => $oForm->createView(),
         ]);
     }
@@ -97,7 +97,6 @@ class P4Controller extends Controller {
      */
     public function logoutAction(Request $oRequest) {
         $oRequest->getSession()->invalidate();
-
         return $this->redirectToRoute('home');
     }
 

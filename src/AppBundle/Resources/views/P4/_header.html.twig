@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img class="navbar-brand" src="../image/logo.png" style="width: 3%; "/>
+    <img class="navbar-brand" src="{{ asset('bundles/app/images/logo.png') }}" style="width: 3%; "/>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,9 +12,11 @@
             <li class="nav-item  active">
                 <a class="nav-link" href="{{ path('register')}}" id="aReg" style="color: #ffbf00;">Register</a>
             </li>
-            <li class="nav-item  active">
-                <a class="nav-link" href="{{ path('logout')}}" id="aLog" style="color: #ffbf00;">Logout</a>
-            </li>
+            {% if app.user %}
+                <li class="nav-item  active">
+                    <a class="nav-link" href="{{ path('logout')}}" id="aLog" style="color: #ffbf00;">Logout</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
