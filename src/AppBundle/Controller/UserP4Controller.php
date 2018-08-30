@@ -66,30 +66,12 @@ class UserP4Controller extends Controller {
 
         $oUser = new User();
         $oForm = $this->createForm(UserLoginType::class, $oUser);
-        $oForm->handleRequest($oRequest);
-
-        if ($oForm->isSubmitted() && $oForm->isValid()) {
-            $oRepUser = $this->getDoctrine()->getRepository(User::class);
-            $oGetUserBDD = $oRepUser->findOneBy(['pseudo' => $oUser->getPseudo()]);
-
-            if ($oGetUserBDD) {
-                $bValidPseudo = 'oui';
-                if ($oPasswordEncoder->isPasswordValid($oGetUserBDD, $oUser->getPassword())) {
-                    $bValidPass = 'oui';
-                    $oRequest->getSession()->set('user', $oUser);
-                    return $this->redirectToRoute('register');
-                } else {
-                    $bValidPass = 'non';
-                    echo'saisi incorrect';
-                }
-            } else {
-                $bValidPseudo = 'non';
-                echo'saisi incorrect';
-            }
-        }
-        return $this->render('@App/P4/loginform.html.twig', [
+        
+        return $this->render('@App/P4/LoginForm.html.twig', [
                     'form' => $oForm->createView(),
         ]);
+        
+        
     }
 
     /**
@@ -99,5 +81,23 @@ class UserP4Controller extends Controller {
         $oRequest->getSession()->invalidate();
         return $this->redirectToRoute('home');
     }
+    
+    /**
+     * @Route("/rules", name="rules")
+     */
+    public function rulesAction(Request $oRequest) {
+
+        return $this->render('@App/P4/rules.html.twig');
+    }
+    
+    /**
+     * 
+     * @Route("/lobby", name="lobby")
+     */
+    public function lobbyAction(Request $oRequest) {
+
+        return $this->render('@App/P4/lobby.html.twig');
+    }
+
 
 }

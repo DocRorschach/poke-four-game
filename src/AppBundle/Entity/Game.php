@@ -5,107 +5,148 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use \Symfony\Component\Security\Core\User\UserInterface;
 
-//use \Symfony\Component\Security\Core\User\UserInterface;
 //use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="game")
  */
-class Game extends User {
-
+class Game  {
+    
     /**
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
+    
     /**
-     * @ORM\Column(name="gamename", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, unique=true)
      */
-    protected $gamename;
-
+    protected $title;
+    
     /**
-     * @ORM\Column(name="status", type="string", length=255)
+     * @ORM\Column(name="difficulty", type="integer")
      */
-    protected $status;
-
+    protected $difficulty;
+    
     /**
-     * @ORM\Column(name="data", type="string", length=255)
+     * @ORM\Column(name="mode", type="integer")
      */
-    protected $data;
-
+    protected $mode;
+    
     /**
-     * @ORM\Column(name="board", type="string", length=255)
+     * @ORM\Column(name="color", type="integer")
      */
-    protected $board;
+    protected $color;
+    
+    
 
     /**
-     * Set gamename
+     * Get id
      *
-     * @param string $gamename
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
      *
      * @return Game
      */
-    public function setGamename($gamename) {
-        $this->gamename = $gamename;
+    public function setTitle($title)
+    {
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get gamename
+     * Get title
      *
      * @return string
      */
-    public function getGamename() {
-        return $this->gamename;
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**
-     * Set status
+     * Set difficulty
      *
-     * @param string $status
+     * @param integer $difficulty
      *
      * @return Game
      */
-    public function setStatus($status) {
-        $this->status = $status;
+    public function setDifficulty($difficulty)
+    {
+        $this->difficulty = $difficulty;
 
         return $this;
     }
 
     /**
-     * Get status
+     * Get difficulty
      *
-     * @return string
+     * @return integer
      */
-    public function getStatus() {
-        return $this->status;
+    public function getDifficulty()
+    {
+        return $this->difficulty;
     }
 
     /**
-     * Set data
+     * Set mode
      *
-     * @param string $data
+     * @param integer $mode
      *
      * @return Game
      */
-    public function setData($data) {
-        $this->data = $data;
+    public function setMode($mode)
+    {
+        $this->mode = $mode;
 
         return $this;
     }
 
     /**
-     * Get data
+     * Get mode
      *
-     * @return string
+     * @return integer
      */
-    public function getData() {
-        return $this->data;
+    public function getMode()
+    {
+        return $this->mode;
     }
 
+    /**
+     * Set color
+     *
+     * @param integer $color
+     *
+     * @return Game
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return integer
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
 }
