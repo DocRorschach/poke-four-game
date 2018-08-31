@@ -12,4 +12,4 @@
 *Tristan
 *Etienne
 #Gamedescription
-A connect four game in pokemon univers
+A connect four game with pokemon univers
