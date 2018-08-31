@@ -17,7 +17,7 @@ class UserP4Controller extends Controller {
      */
     public function homeAction(Request $oRequest) {
 
-        return $this->redirectToRoute('login');
+        return $this->render('@App/P4/index.html.twig');
     }
 
     public function hydrate($aUser) {
