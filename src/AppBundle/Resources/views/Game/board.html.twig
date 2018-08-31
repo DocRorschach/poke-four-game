@@ -1,15 +1,62 @@
 {% extends '@App/P4/index.html.twig' %}
 
 {% block App_body %}
+    <a href="" id=clear class="btn btn-primary" style="margin-left: 60px;font-size: 30px; background-color: #ffffcc; color: black;">clear</a>
+    <div id='player1' style='position:absolute;height:100px;width:100px;left:10px;top:260px'><form name='form1'><input class="btn btn-primary" type='button' value='Player 1' name='p1' onclick='verif(\"form1\")'>
+            <br><br><input type='text' name='resultj1' size='4' value='0'></form></div>
+    <div id='player2' style='position:absolute;height:100px;width:100px;left:10px;top:400px'><form name='form2'><input class="btn btn-primary" type='button' value='Player 2' name='p2' onclick='verif(\"form2\")'>
+            <br><br><input type='text' name='resultj2' size='4' value='0'></form></div>
+
+
+
+
     <div id="board" style="text-align: center;">
-        <table border=10 style="margin: auto; width: 80%; background-color: white">
-            {% for t in tab %}
+        <table border=10 style="margin: auto; width: 70%; background-color: blue; border-top: none;">
+            {% for i, t in tab %}
                 <tr>
                     {% for strb in t %}
-                        <td  class="{{ strb }}" style="width: 10%; height: 80px;">{{ strb }}</td>
-                    {% endfor %}
+                        <td style="width: 10%; height: 80px; border: none">
+                            <img class="cell" y="{{ i }}" x="{{ strb }}" src="{{ asset('bundles/app/images/pasdepion.GIF')}}" style="width: 100%;"/></td>
+                        {% endfor %}
                 </tr>
             {% endfor %}
         </table>
     </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+
+        var count = 0;
+        $(".cell").click(function(){
+
+        var x = this.getAttribute('x');
+        var y = this.getAttribute('y');
+        console.log(x, y);
+        if (count % 2 == 0){
+
+        $(this).attr('src', "{{ asset('bundles/app/images/pion_jaune.GIF')}}");
+        count += 1;
+        //console.log(count);
+        } else {
+        $(this).attr('src', "{{ asset('bundles/app/images/pion_rouge.GIF')}}");
+        count += 1;
+        //console.log(count);
+        }
+        });
+        $("#clear").click(function(){
+        count = 0;
+        });
+        });
+    </script>
+
+
 {% endblock %}

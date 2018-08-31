@@ -66,12 +66,10 @@ class UserP4Controller extends Controller {
 
         $oUser = new User();
         $oForm = $this->createForm(UserLoginType::class, $oUser);
-        
-        return $this->render('@App/P4/LoginForm.html.twig', [
+
+        return $this->render('@App/P4/loginform.html.twig', [
                     'form' => $oForm->createView(),
         ]);
-        
-        
     }
 
     /**
@@ -81,7 +79,7 @@ class UserP4Controller extends Controller {
         $oRequest->getSession()->invalidate();
         return $this->redirectToRoute('home');
     }
-    
+
     /**
      * @Route("/rules", name="rules")
      */
@@ -89,7 +87,7 @@ class UserP4Controller extends Controller {
 
         return $this->render('@App/P4/rules.html.twig');
     }
-    
+
     /**
      * 
      * @Route("/lobby", name="lobby")
@@ -98,6 +96,5 @@ class UserP4Controller extends Controller {
 
         return $this->render('@App/P4/lobby.html.twig');
     }
-
 
 }

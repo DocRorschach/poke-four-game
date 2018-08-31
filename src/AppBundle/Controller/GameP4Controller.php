@@ -11,27 +11,18 @@ use AppBundle\Entity\Board;
 class GameP4Controller extends Controller {
 
     /**
-     * @Route("/game/{id}", name="viewGame")
+     * @Route("/game", name="viewGame")
      * @Template
      */
     public function boardAction() {
 
-        /*
-          for ($i = 0; $i < 5; $i++) {
-          $aEx[$t["$i"]] = '<a>' . $i . '</a>';
-          }
-          dump($aEx);
-         */
+        for ($y = 1; $y < 5; $y++) {
+            for ($x = 1; $x < 7; $x++) {
+                $aGrid[$y][$x] = $x;
+            }
+        }
+        dump($aGrid);
 
-
-        $aGrid = [
-            ['1', '2', '3', '4', '5', '6'],
-            ['1', '2', '3', '4', '5', '6'],
-            ['1', '2', '3', '4', '5', '6'],
-            ['1', '2', '3', '4', '5', '6'],
-            ['1', '2', '3', '4', '5', '6'],
-            ['1', '2', '3', '4', '5', '6'],
-        ];
 
         $game = new Game;
         return $this->render('@App/Game/board.html.twig', [
