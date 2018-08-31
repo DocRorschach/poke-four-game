@@ -11,7 +11,7 @@ use AppBundle\Entity\Board;
 class GameP4Controller extends Controller {
 
     /**
-     * @Route("/game/{id}", name="viewGame")
+     * @Route("/game", name="viewGame")
      * @Template
      */
     public function boardAction() {
