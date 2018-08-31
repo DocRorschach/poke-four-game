@@ -12,4 +12,16 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class GameP4Controller extends Controller {
 
+    public function createAction() {
+
+    }
+
+    public function joinAction() {
+
+    }
+
+    public function displayAction() {
+
+    }
+
 }
