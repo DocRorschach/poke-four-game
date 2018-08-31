@@ -1,0 +1,15 @@
+{% extends '@App/P4/index.html.twig' %}
+
+{% block App_body %}
+    <div id="board" style="text-align: center;">
+        <table border=10 style="margin: auto; width: 80%; background-color: white">
+            {% for t in tab %}
+                <tr>
+                    {% for strb in t %}
+                        <td  class="{{ strb }}" style="width: 10%; height: 80px;">{{ strb }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

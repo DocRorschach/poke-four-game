@@ -13,15 +13,15 @@
             {% else %}
                 <li class="nav-item  active">
                     <a class="nav-link" href="{{ path('home')}}" id="aAcc" style="color: #ffbf00;">Home<span class="sr-only">(current)</span></a>
-                </li>    
+                </li>
             {% endif %}
-            
+
             <li class="nav-item  active">
                 <a class="nav-link" href="{{ path('register')}}" id="aReg" style="color: #ffbf00;">Register</a>
             </li>
             {% if app.user %}
                 <li class="nav-item  active">
-                     <a class="nav-link" href="{{ path('logout')}}" id="aLog" style="color: #ffbf00;">Logout</a>
+                    <a class="nav-link" href="{{ path('logout')}}" id="aLog" style="color: #ffbf00;">Logout</a>
                 </li>
             {% endif %}
         </ul>

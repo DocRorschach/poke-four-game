@@ -11,8 +11,7 @@ use AppBundle\Form\UserLoginType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserP4Controller extends Controller {
-    
-   
+
     /**
      * @Route("/", name="home")
      */
@@ -23,7 +22,7 @@ class UserP4Controller extends Controller {
 
     public function hydrate($aUser) {
         $oUser = new User();
-        $oUser->setNom($aUser['nom']);
+        $oUser->setFirstname($aUser['firstName']);
         $oUser->setPseudo($aUser['pseudo']);
         $oUser->setPassword($aUser['password']);
         return $oUser;
@@ -55,7 +54,7 @@ class UserP4Controller extends Controller {
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('@App/P4/RegisterForm.html.twig', [
+        return $this->render('@App/P4/registerform.html.twig', [
                     'form' => $oForm->createView()
         ]);
     }
@@ -80,7 +79,6 @@ class UserP4Controller extends Controller {
      */
     public function logoutAction(Request $oRequest) {
         $oRequest->getSession()->invalidate();
-
         return $this->redirectToRoute('home');
     }
     
