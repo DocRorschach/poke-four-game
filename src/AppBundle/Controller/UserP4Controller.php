@@ -15,12 +15,12 @@ class UserP4Controller extends Controller {
     /**
      * @Route("/", name="home")
      */
-    public function homeAction(Request $oRequest) {
+    public function homeAction() {
 
         return $this->render('@App/P4/index.html.twig');
     }
 
-    public function hydrate($aUser) {
+    private function hydrate($aUser) {
         $oUser = new User();
         $oUser->setFirstname($aUser['firstName']);
         $oUser->setPseudo($aUser['pseudo']);
@@ -28,7 +28,7 @@ class UserP4Controller extends Controller {
         return $oUser;
     }
 
-    public function saveUser($oUser) {
+    private function saveUser($oUser) {
         $entityM = $this->getDoctrine()->getManager();
         $entityM->persist($oUser);
         $entityM->flush();
@@ -62,7 +62,7 @@ class UserP4Controller extends Controller {
     /**
      * @Route("/login", name="login")
      */
-    public function loginAction(Request $oRequest, UserPasswordEncoderInterface $oPasswordEncoder) {
+    public function loginAction() {
 
         $oUser = new User();
         $oForm = $this->createForm(UserLoginType::class, $oUser);
@@ -75,15 +75,15 @@ class UserP4Controller extends Controller {
     /**
      * @Route("/logout", name="logout")
      */
-    public function logoutAction(Request $oRequest) {
-        $oRequest->getSession()->invalidate();
+    public function logoutAction() {
+        
         return $this->redirectToRoute('home');
     }
 
     /**
      * @Route("/rules", name="rules")
      */
-    public function rulesAction(Request $oRequest) {
+    public function rulesAction() {
 
         return $this->render('@App/P4/rules.html.twig');
     }
@@ -92,9 +92,27 @@ class UserP4Controller extends Controller {
      * 
      * @Route("/lobby", name="lobby")
      */
-    public function lobbyAction(Request $oRequest) {
+    public function lobbyAction() {
 
         return $this->render('@App/P4/lobby.html.twig');
+    }
+    
+    /**
+     * 
+     * @Route("/victory-player1", name="victoryP1")
+     */
+    public function victoryP1Action() {
+
+        return $this->render('@App/P4/victoryP1.html.twig');
+    }
+    
+    /**
+     * 
+     * @Route("/victory-player2", name="victoryP2")
+     */
+    public function victoryP2Action() {
+
+        return $this->render('@App/P4/victoryP2.html.twig');
     }
 
 }
