@@ -21,7 +21,7 @@ class GameP4Controller extends Controller {
                 $aGrid[$y][$x] = $x;
             }
         }
-        dump($aGrid);
+
 
 
         $game = new Game;
