@@ -3,39 +3,49 @@
         <div class="col-md-2">
             <ul >
                 <strong><a href="{{ path('rules')}}">Game Rules</a></strong><br>
-                Link to Game Rules Description P4.
+               
             </ul>
         </div>
 
 
-        <div class="col-md-8">
-            <ul>
-                <li>
-                    <strong>Legal Mentions</strong><br>
+        <div style="text-align: center;" class="col-md-8">
+            <a href=""><strong onclick="javascript:legal_mentions();">Legal Mentions</strong></a>
 
-                    The consultation of the website p4.com
-                    does not require the provision of the users’ personal data.The consultation of the website P4.com
-                    does not require the provision of the users’ personal data.The collection and processing of these
-                    personal data comply with French data protection regulation (Loi du 6 janvier 1978).
-                    The user has a right of access, modification, suppression to its personal data and
-                    right of objection that he can exercise at the following
+                    
 
 
-                </li>
-            </ul>
+              
         </div>
-
-        <div class="col-md-2">
-            <ul>
-                <li>
-                    <strong>Webmasters</strong>
-                    <ul>
+        <div style="text-align: center;" class="col-md-2">
+            <a href=""><strong onclick="javascript:open_webmasters();">Webmasters</strong></a>
+                    {#<ul>
                         <li>Etienne</li>
                         <li>Tristan</li>
                         <li>Salim</li>
-                    </ul>
-                </li>
-            </ul>
+                    </ul>#}
         </div>
     </nav>
 </footer>
+                    
+<script type="text/javascript">
+    
+    
+    function legal_mentions()
+    {
+        alert("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+    }
+                
+    function open_webmasters()
+        {
+            alert("Cette page a été crée par trois brillants cerveaux : \n\
+    \n\
+                   Etienne, le minot chevelu \n\
+\n\
+                   Tristan, le tatoué \n\
+\n\
+                   Salim, le sage\n\
+\n\
+                   En espérant que vous vous amuserez !");
+        }
+
+</script>

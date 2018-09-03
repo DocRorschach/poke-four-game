@@ -392,9 +392,12 @@
 
                 //vérification victoire
 
-                if (a1["yellow"] == 4 || a2["yellow"] == 4 || a3["yellow"] == 4 || a4["yellow"] == 4 ||
-                        a5["yellow"] == 4 || a6["yellow"] == 4 || b1["yellow"] == 4 || b2["yellow"] == 4 || b3["yellow"] == 4 || b4["yellow"] == 4 ||
-                        b5["yellow"] == 4) {
+                if (a1["yellow"] == 4 || a2["yellow"] == 4 || 
+                    a3["yellow"] == 4 || a4["yellow"] == 4 ||
+                    a5["yellow"] == 4 || a6["yellow"] == 4 || 
+                    b1["yellow"] == 4 || b2["yellow"] == 4 || 
+                    b3["yellow"] == 4 || b4["yellow"] == 4 ||
+                    b5["yellow"] == 4) {
                     void window.location.reload();
                     countclick = 0;
                     if (isNaN(scorejP1)) {
@@ -411,11 +414,15 @@
                         setCookie('CookScorejP1', scorejP1);
                         setCookie('CookScorerP2', scorerP2);
                         countclick = 0;
+                        window.location.replace('victoryP1.html.twig');
                     }
                 }
-                if (a1["red"] == 4 || a2["red"] == 4 || a3["red"] == 4 || a4["red"] == 4 ||
-                        a5["red"] == 4 || a6["red"] == 4 || b1["red"] == 4 || b2["red"] == 4 || b3["red"] == 4 || b4["red"] == 4 ||
-                        b5["red"] == 4) {
+                if (a1["red"] == 4 || a2["red"] == 4 || 
+                    a3["red"] == 4 || a4["red"] == 4 ||
+                    a5["red"] == 4 || a6["red"] == 4 || 
+                    b1["red"] == 4 || b2["red"] == 4 || 
+                    b3["red"] == 4 || b4["red"] == 4 ||
+                    b5["red"] == 4) {
                     void window.location.reload();
                     countclick = 0;
                     if (isNaN(scorerP2)) {
@@ -431,6 +438,8 @@
                         setCookie('CookScorejP1', scorejP1);
                         setCookie('CookScorerP2', scorerP2);
                         countclick = 0;
+                        window.location.replace('victoryP2.html.twig');
+                        
                     }
                 }
 

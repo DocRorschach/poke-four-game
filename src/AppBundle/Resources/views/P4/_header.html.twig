@@ -6,10 +6,10 @@
 
     <div class="navbar-collapse collapse justify-content-end" id="navbarTogglerDemo02">
         <ul class="navbar-nav">
+            <li class="nav-item  active">
+                <a class="nav-link" href="{{ path('home')}}" id="aAcc" style="color: #ffbf00;">Home<span class="sr-only">(current)</span></a>
+            </li>
             {% if app.user %}
-                <li class="nav-item  active">
-                    <a class="nav-link" href="{{ path('home')}}" id="aAcc" style="color: #ffbf00;">Home<span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item  active">
                     <a class="nav-link" href="{{ path('viewGame')}}" id="aAcc" style="color: #ffbf00;">New game<span class="sr-only">(current)</span></a>
                 </li>
@@ -21,7 +21,7 @@
                     <a class="nav-link" href="{{ path('login')}}" id="aAcc" style="color: #ffbf00;">Login<span class="sr-only">(current)</span></a>
                 </li>
             {% endif %}
-                   <li class="nav-item  active">
+            <li class="nav-item  active">
                 <a class="nav-link" href="{{ path('register')}}" id="aReg" style="color: #ffbf00;">Register</a>
             </li>
 
