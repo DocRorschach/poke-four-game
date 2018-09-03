@@ -6,7 +6,11 @@
         <div style="text-align: center; margin-top: 30px;">
             <img style="height: 100px; width: 650px" src="{{ asset('bundles/app/images/welcomeprompt.png')}}"  alt="Welcome" />
             </br>
-            <a href="{{ path('login')}}"><img src="{{ asset('bundles/app/images/logopage.png')}}"  alt="Main_picture" /></a>
+            {% if app.user %}
+                <a href="{{ path('viewGame')}}"><img style="height: 500px; width: 850px" src="{{ asset('bundles/app/images/logopage.png')}}"  alt="Main_picture" /></a>
+            {% else %}
+                <a href="{{ path('login')}}"><img style="height: 500px; width: 850px" src="{{ asset('bundles/app/images/logopage.png')}}"  alt="Main_picture" /></a>
+            {% endif %}
         </div>
     {% endblock %}
 
