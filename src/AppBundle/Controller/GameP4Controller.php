@@ -6,7 +6,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Game;
-use AppBundle\Entity\Board;
+use AppBundle\Model\Board;
 
 class GameP4Controller extends Controller {
 
@@ -21,7 +21,7 @@ class GameP4Controller extends Controller {
                 $aGrid[$y][$x] = $x;
             }
         }
-        dump($aGrid);
+
 
 
         $game = new Game;
