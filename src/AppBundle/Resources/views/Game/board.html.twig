@@ -123,6 +123,7 @@
         $(document).ready(function () {
 
             valCookScorejP1 = getCookie('CookScorejP1');
+            console.log(valCookScorejP1)
             $("#iDscorejP1").attr('value', valCookScorejP1);
             scorejP1 = Number(valCookScorejP1);
 
@@ -352,8 +353,9 @@
                     scorejP1++;
                     setCookie('CookScorejP1', scorejP1);
                     alert("Player 1 wins 1 point");
-                    if (scorejP1 == 3) {
-                        alert("Congratulations! Player 1 wins the game!");
+                    if (scorejP1 == 3) 
+                    {
+                        confirm("Congratulations! Player 1 wins the game!");
                         scorejP1 = 0;
                         scorerP2 = 0;
                         setCookie('CookScorejP1', scorejP1);
@@ -376,14 +378,16 @@
                     scorerP2++;
                     setCookie('CookScorerP2', scorerP2);
                     alert("Player 2 wins 1 point");
-                    if (scorerP2 == 3) {
-                        alert("Congratulations! Player 2 wins the game!");
+                    if (scorerP2 == 3) 
+                    {
+                        //confirm("Congratulations! Player 2 wins the game!");
                         scorejP1 = 0;
                         scorerP2 = 0;
+                      
                         setCookie('CookScorejP1', scorejP1);
                         setCookie('CookScorerP2', scorerP2);
                         countclick = 0;
-                        window.location.replace('victoryP2.html.twig');
+                        //window.location.replace('victoryP2.html.twig');
                         
                     }
                 }
