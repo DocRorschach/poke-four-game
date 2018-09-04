@@ -12,8 +12,35 @@
                 <a href="{{ path('login')}}"><img style="height: 500px; width: 850px" src="{{ asset('bundles/app/images/logopage.png')}}"  alt="Main_picture" /></a>
             {% endif %}
         </div>
+        
+      
     {% endblock %}
 
+
+
+
+<script>
+    function onKonamiCode(cb) {
+      var input = '';
+      var key = '38384040373937396665';
+      document.addEventListener('keydown', function (e) {
+        input += ("" + e.keyCode);
+        if (input === key) {
+          return cb();
+        }
+        if (!key.indexOf(input)) return;
+        input = ("" + e.keyCode);
+      });
+    }
+
+    onKonamiCode(
+            function () {
+                alert("YOU HAVE ENTERED THE KONAMI CODE");
+                window.location.href = "https://i.chzbgr.com/full/8805039360/h1DC4A88A/";
+                       
+            }
+    );
+</script>
+
+
 {% endblock %}
-
-
