@@ -155,7 +155,10 @@
                 //pour placer le jeton sur la première cellule libre de la colonne
                 for (idx = id_bottom; idx >= id_top; idx--) {
                     var ida = idx.toString();
+                    var last_lineIda = ida - 10;
+                    //console.log(last_lineIda);
                     id = '#' + ida;
+                    last_id = '#' + last_lineIda;
                     var src = $(id).attr('src');
 
                     if (src == nochip) {
@@ -163,45 +166,51 @@
                             $(id).attr('src', "{{ asset('bundles/app/images/pokej.gif')}}");
                             countclick += 1;
                             src_cell = $(id).attr('src');
-                            datay_celly = $(id).attr('data_y')
-                            console.log(datay_celly);
+                            src_cell_lastId = $(last_id).attr('src');
+                            console.log(src_cell_lastId);
+                            datay_celly = $(id).attr('data_y');
+                            datax_cellx = $(id).attr('data_x');
+
+                            //console.log(datay_celly);
+
+
 
                             //vérification des colonnes pour la mise d'un jeton jaune
                             switch (data_x) {
                                 case '1':
                                     x1 = count_check(yellowfullcell_1, redfullcell_1);
                                     a1["yellow"] = a1["yellow"] + x1["yellow"];
-                                    a1["red"] = a1["red"] + x1["red"];
+                                    a1["red"] = 0;
                                     //console.log(a1);
                                     break;
                                 case '2':
                                     x2 = count_check(yellowfullcell_2, redfullcell_2);
                                     a2["yellow"] = a2["yellow"] + x2["yellow"];
-                                    a2["red"] = a2["red"] + x2["red"];
+                                    a2["red"] = 0;
                                     //console.log(a2);
                                     break;
                                 case '3':
                                     x3 = count_check(yellowfullcell_3, redfullcell_3);
                                     a3["yellow"] = a3["yellow"] + x3["yellow"];
-                                    a3["red"] = a3["red"] + x3["red"];
+                                    a3["red"] = 0;
                                     //console.log(a3);
                                     break;
                                 case '4':
                                     x4 = count_check(yellowfullcell_4, redfullcell_4);
                                     a4["yellow"] = a4["yellow"] + x4["yellow"];
-                                    a4["red"] = a4["red"] + x4["red"];
+                                    a4["red"] = 0;
                                     //console.log(a4);
                                     break;
                                 case '5':
                                     x5 = count_check(yellowfullcell_5, redfullcell_5);
                                     a5["yellow"] = a5["yellow"] + x5["yellow"];
-                                    a5["red"] = a5["red"] + x5["red"];
+                                    a5["red"] = 0;
                                     //console.log(a5);
                                     break;
                                 case '6':
                                     x6 = count_check(yellowfullcell_6, redfullcell_6);
                                     a6["yellow"] = a6["yellow"] + x6["yellow"];
-                                    a6["red"] = a6["red"] + x6["red"];
+                                    a6["red"] = 0;
                                     //console.log(a6);
                                     break;
                                 default:
@@ -212,33 +221,53 @@
                             //vérification des lignes pour la mise d'un jeton jaune
                             switch (datay_celly) {
                                 case '1':
-                                    y1 = count_check(yellowfullcell_b1, redfullcell_b1);
-                                    b1["yellow"] = b1["yellow"] + y1["yellow"];
-                                    b1["red"] = b1["red"] + y1["red"];
+                                    if ((b1["yellow"] > 0) && (src_cell_lastId !== yellowchip)) {
+                                        console.log('ok');
+                                    } else {
+                                        y1 = count_check(yellowfullcell_b1, redfullcell_b1);
+                                        b1["yellow"] = b1["yellow"] + y1["yellow"];
+                                        console.log('nok');
+                                    }
+                                    b1["red"] = 0;
                                     console.log(b1);
                                     break;
                                 case '2':
-                                    y2 = count_check(yellowfullcell_b2, redfullcell_b2);
-                                    b2["yellow"] = b2["yellow"] + y2["yellow"];
-                                    b2["red"] = b2["red"] + y2["red"];
+                                    if (b2["yellow"] > 0 && src_cell_lastId !== yellowchip) {
+                                        console.log('ok');
+                                    } else {
+                                        y2 = count_check(yellowfullcell_b2, redfullcell_b2);
+                                        b2["yellow"] = b2["yellow"] + y2["yellow"];
+                                    }
+                                    b2["red"] = 0;
                                     console.log(b2);
                                     break;
                                 case '3':
-                                    y3 = count_check(yellowfullcell_b3, redfullcell_b3);
-                                    b3["yellow"] = b3["yellow"] + y3["yellow"];
-                                    b3["red"] = b3["red"] + y3["red"];
+                                    if (b3["yellow"] > 0 && src_cell_lastId !== yellowchip) {
+                                        console.log('ok');
+                                    } else {
+                                        y3 = count_check(yellowfullcell_b3, redfullcell_b3);
+                                        b3["yellow"] = b3["yellow"] + y3["yellow"];
+                                    }
+                                    b3["red"] = 0;
                                     console.log(b3);
                                     break;
                                 case '4':
-                                    y4 = count_check(yellowfullcell_b4, redfullcell_b4);
-                                    b4["yellow"] = b4["yellow"] + y4["yellow"];
-                                    b4["red"] = b4["red"] + y4["red"];
+                                    if (b4["yellow"] > 0 && src_cell_lastId !== yellowchip) {
+                                        console.log('ok');
+                                    } else {
+                                        y4 = count_check(yellowfullcell_b4, redfullcell_b4);
+                                        b4["yellow"] = b4["yellow"] + y4["yellow"];
+                                    }
+                                    b4["red"] = 0;
                                     console.log(b4);
                                     break;
                                 case '5':
+                                    if (b5["yellow"] == 3 && src_cell_lastId !== yellowchip) {
+                                        break;
+                                    }
                                     y5 = count_check(yellowfullcell_b5, redfullcell_b5);
                                     b5["yellow"] = b5["yellow"] + y5["yellow"];
-                                    b5["red"] = b5["red"] + y5["red"];
+                                    b5["red"] = 0;
                                     console.log(b5);
                                     break;
                                 default:
@@ -251,43 +280,43 @@
                             countclick += 1;
                             src_cell = $(id).attr('src');
                             datay_cellr = $(id).attr('data_y');
-                            console.log(datay_cellr);
+                            //console.log(datay_cellr);
 
                             //vérification des colonnes pour la mise d'un jeton rouge
                             switch (data_x) {
                                 case '1':
                                     x1 = count_check(yellowfullcell_1, redfullcell_1);
-                                    a1["yellow"] = a1["yellow"] + x1["yellow"];
+                                    a1["yellow"] = 0;
                                     a1["red"] = a1["red"] + x1["red"];
                                     //console.log(a1);
                                     break;
                                 case '2':
                                     x2 = count_check(yellowfullcell_2, redfullcell_2);
-                                    a2["yellow"] = a2["yellow"] + x2["yellow"];
+                                    a2["yellow"] = 0;
                                     a2["red"] = a2["red"] + x2["red"];
                                     //console.log(a2);
                                     break;
                                 case '3':
                                     x3 = count_check(yellowfullcell_3, redfullcell_3);
-                                    a3["yellow"] = a3["yellow"] + x3["yellow"];
+                                    a3["yellow"] = 0;
                                     a3["red"] = a3["red"] + x3["red"];
                                     //console.log(a3);
                                     break;
                                 case '4':
                                     x4 = count_check(yellowfullcell_4, redfullcell_4);
-                                    a4["yellow"] = a4["yellow"] + x4["yellow"];
+                                    a4["yellow"] = 0;
                                     a4["red"] = a4["red"] + x4["red"];
                                     //console.log(a4);
                                     break;
                                 case '5':
                                     x5 = count_check(yellowfullcell_5, redfullcell_5);
-                                    a5["yellow"] = a5["yellow"] + x5["yellow"];
+                                    a5["yellow"] = 0;
                                     a5["red"] = a5["red"] + x5["red"];
                                     //console.log(a5);
                                     break;
                                 case '6':
                                     x6 = count_check(yellowfullcell_6, redfullcell_6);
-                                    a6["yellow"] = a6["yellow"] + x6["yellow"];
+                                    a6["yellow"] = 0;
                                     a6["red"] = a6["red"] + x6["red"];
                                     //console.log(a6);
                                     break;
@@ -298,34 +327,60 @@
                             //vérification des lignes pour la mise d'un jeton rouge
                             switch (datay_cellr) {
                                 case '1':
-                                    y1 = count_check(yellowfullcell_b1, redfullcell_b1);
-                                    b1["yellow"] = b1["yellow"] + y1["yellow"];
-                                    b1["red"] = b1["red"] + y1["red"];
-                                    console.log(b1);
+                                    if ((b1["red"] > 0) && (src_cell_lastId !== redchip)) {
+                                        console.log('ok');
+                                    } else {
+                                        y1 = count_check(yellowfullcell_b1, redfullcell_b1);
+                                        b1["red"] = b1["red"] + y1["red"];
+                                        console.log('nok');
+                                    }
+                                    b1["yellow"] = 0;
+
+                                    //console.log(b1);
                                     break;
                                 case '2':
-                                    y2 = count_check(yellowfullcell_b2, redfullcell_b2);
-                                    b2["yellow"] = b2["yellow"] + y2["yellow"];
-                                    b2["red"] = b2["red"] + y2["red"];
-                                    console.log(b2);
+                                    if ((b2["red"] > 0) && (src_cell_lastId !== redchip)) {
+                                        console.log('ok');
+                                    } else {
+                                        y2 = count_check(yellowfullcell_b2, redfullcell_b2);
+                                        b2["red"] = b2["red"] + y2["red"];
+                                        console.log('nok');
+                                    }
+                                    b2["yellow"] = 0;
+                                    //console.log(b2);
                                     break;
                                 case '3':
-                                    y3 = count_check(yellowfullcell_b3, redfullcell_b3);
-                                    b3["yellow"] = b3["yellow"] + y3["yellow"];
-                                    b3["red"] = b3["red"] + y3["red"];
-                                    console.log(b3);
+                                    if ((b3["red"] > 0) && (src_cell_lastId !== redchip)) {
+                                        console.log('ok');
+                                    } else {
+                                        y3 = count_check(yellowfullcell_b3, redfullcell_b3);
+                                        b3["red"] = b3["red"] + y3["red"];
+                                        console.log('nok');
+                                    }
+                                    b3["yellow"] = 0;
+                                    //console.log(b3);
                                     break;
                                 case '4':
-                                    y4 = count_check(yellowfullcell_4, redfullcell_4);
-                                    b4["yellow"] = b4["yellow"] + y4["yellow"];
-                                    b4["red"] = b4["red"] + y4["red"];
-                                    console.log(b4);
+                                    if ((b4["red"] > 0) && (src_cell_lastId !== redchip)) {
+                                        console.log('ok');
+                                    } else {
+                                        y4 = count_check(yellowfullcell_4, redfullcell_4);
+                                        b4["red"] = b4["red"] + y4["red"];
+                                        console.log('nok');
+                                    }
+                                    b4["yellow"] = 0;
+                                    //console.log(b4);
                                     break;
                                 case '5':
-                                    y5 = count_check(yellowfullcell_b5, redfullcell_b5);
-                                    b5["yellow"] = b5["yellow"] + y5["yellow"];
-                                    b5["red"] = b5["red"] + y5["red"];
-                                    console.log(b5);
+                                    if ((b5["red"] > 0) && (src_cell_lastId !== redchip)) {
+                                        console.log('ok');
+                                    } else {
+                                        y5 = count_check(yellowfullcell_b5, redfullcell_b5);
+                                        b5["red"] = b5["red"] + y5["red"];
+                                        console.log('nok');
+                                    }
+                                    b5["yellow"] = 0;
+                                    //console.log(b5);
                                     break;
                                 default:
                                     console.log('sorry, data_y error');
