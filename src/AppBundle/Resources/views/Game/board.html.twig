@@ -638,7 +638,7 @@
                 if (a1["yellow"] == 4 || a2["yellow"] == 4 || a3["yellow"] == 4 || a4["yellow"] == 4 ||
                         a5["yellow"] == 4 || a6["yellow"] == 4 || b1["yellow"] == 4 || b2["yellow"] == 4 || b3["yellow"] == 4 || b4["yellow"] == 4 ||
                         b5["yellow"] == 4 || Jl == 1 || Jr == 1) {
-                    void window.location.reload();
+                    
                     countclick = 0;
                     if (isNaN(scorejP1)) {
                         scorejP1 = 0;
@@ -647,7 +647,7 @@
                     scorejP1++;
                     setCookie('CookScorejP1', scorejP1);
                     alert("Player 1 wins 1 point");
-                    if (scorejP1 == 3) {
+                    if (scorejP1 === 3) {
                         
                         scorejP1 = 0;
                         scorerP2 = 0;
@@ -665,7 +665,7 @@
                 if (a1["red"] == 4 || a2["red"] == 4 || a3["red"] == 4 || a4["red"] == 4 ||
                         a5["red"] == 4 || a6["red"] == 4 || b1["red"] == 4 || b2["red"] == 4 || b3["red"] == 4 || b4["red"] == 4 ||
                         b5["red"] == 4 || Rl == 1 || Rr == 1) {
-                    void window.location.reload();
+                    
                     countclick = 0;
                     if (isNaN(scorerP2)) {
                         scorerP2 = 0;
@@ -673,7 +673,7 @@
                     scorerP2++;
                     setCookie('CookScorerP2', scorerP2);
                     alert("Player 2 wins 1 point");
-                    if (scorerP2 == 3) {
+                    if (scorerP2 === 3) {
                         
                         scorejP1 = 0;
                         scorerP2 = 0;
