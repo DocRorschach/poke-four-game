@@ -24,14 +24,60 @@
         </table>
     </div>
 
+    <div id="popupWin1"class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Victoire !</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: center">
+                        <img style="margin-bottom: 20px; width: 95%" src="{{ asset('bundles/app/images/promptvictoryP1.png')}}"  alt="J1" />
+                        </br>
+                        <img style="width: 95%" src="{{ asset('bundles/app/images/victoryP1.gif')}}"  alt="Victoire joueur 1" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Rejouer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupWin2"class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Victoire !</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: center">
+                        <img style="margin-bottom: 20px; width: 95%" src="{{ asset('bundles/app/images/promptvictoryP2.png')}}"  alt="J2" />
+                        </br>
+                        <img style="width: 95%" src="{{ asset('bundles/app/images/victoryP2.gif')}}"  alt="Victoire joueur 2" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Rejouer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}
 
 {% block javascripts %}
 
-
+    //Avant toute chose, il faut vérifier que javascript est bien activé et que les cookies .
     <script>
-        //Avant toute chose, il faut vérifier que javascript est bien activé et que les cookies .
+
         var tabcellx = new Array();
         var scorejP1;
         var scorerP2;
@@ -79,7 +125,7 @@
         a6 = {"yellow": 0, "red": 0};
         yellowfullcell_6 = 0;
         redfullcell_6 = 0;
-        var src_couleur;
+
 
         function count_check(yellowfullcell_x, redfullcell_x) {
             if (src_cell == yellowchip) {
@@ -101,6 +147,23 @@
         }
 
 
+        function setCookie(sName, sValue) {
+            var today = new Date(), expires = new Date();
+            expires.setTime(today.getTime() + (365 * 24 * 60 * 60 * 1000));
+            document.cookie = sName + "=" + encodeURIComponent(sValue) + ";expires=" + expires.toGMTString();
+        }
+
+
+        function getCookie(sName) {
+            var oRegex = new RegExp("(?:; )?" + sName + "=([^;]*);?");
+            if (oRegex.test(document.cookie)) {
+                return decodeURIComponent(RegExp["$1"]);
+            } else {
+                return null;
+            }
+        }
+        
+        
         function diagonaleL_count(id, srcColorCell) {
             if (id == 12 || id == 23 || id == 34 || id == 45) {
                 count_diag = 0;
@@ -293,29 +356,19 @@
 
 
 
-        function setCookie(sName, sValue) {
-            var today = new Date(), expires = new Date();
-            expires.setTime(today.getTime() + (365 * 24 * 60 * 60 * 1000));
-            document.cookie = sName + "=" + encodeURIComponent(sValue) + ";expires=" + expires.toGMTString();
-        }
-
-
-        function getCookie(sName) {
-            var oRegex = new RegExp("(?:; )?" + sName + "=([^;]*);?");
-            if (oRegex.test(document.cookie)) {
-                return decodeURIComponent(RegExp["$1"]);
+        function frame() {
+            if (pos == id) {
+                clearInterval(id);
             } else {
-                return null;
+                pos++;
+                elem.style.top = pos + 'px';
             }
         }
-
-
 
         //prise en compte de la page DOM par JS
         $(document).ready(function () {
 
             valCookScorejP1 = getCookie('CookScorejP1');
-            console.log(valCookScorejP1)
             $("#iDscorejP1").attr('value', valCookScorejP1);
             scorejP1 = Number(valCookScorejP1);
 
@@ -330,8 +383,8 @@
             countclick = 0;
             var row = 5;
             var col = 6;
-            yellowchip = '/poke-four-game/web/bundles/app/images/pokej.gif';
-            redchip = '/poke-four-game/web/bundles/app/images/poker.gif';
+            yellowchip = '/poke-four-game/web/bundles/app/images/pokej.png';
+            redchip = '/poke-four-game/web/bundles/app/images/poker.png';
             nochip = '/poke-four-game/web/bundles/app/images/nochip.GIF';
 
 
@@ -343,57 +396,66 @@
                 id_bottom = parseInt(id_bottom, 10);
                 var idx;
 
+                //myMove();
 
                 //pour placer le jeton sur la première cellule libre de la colonne
                 for (idx = id_bottom; idx >= id_top; idx--) {
                     var ida = idx.toString();
-                    var last_lineIda = ida - 10;
                     id = '#' + ida;
-                    last_id = '#' + last_lineIda;
                     var src = $(id).attr('src');
-
 
                     if (src == nochip) {
                         if (countclick % 2 == 0) {
-                            $(id).attr('src', "{{ asset('bundles/app/images/pokej.gif')}}");
+                            $(id).attr('src', "{{ asset('bundles/app/images/pokej.png')}}");
+                            $(id).css({
+                                'position': 'relative',
+                                'top': '-1000px',
+                                '-webkit-transform': 'translateY(1000px)',
+                                '-webkit-transition-duration': '1s',
+                            });
+
                             countclick += 1;
                             src_cell = $(id).attr('src');
-                            src_cell_lastId = $(last_id).attr('src');
-                            datay_celly = $(id).attr('data_y');
-                            datax_cellx = $(id).attr('data_x');
-
+                            datay_celly = $(id).attr('data_y')
+                            console.log(datay_celly);
 
                             //vérification des colonnes pour la mise d'un jeton jaune
                             switch (data_x) {
                                 case '1':
                                     x1 = count_check(yellowfullcell_1, redfullcell_1);
                                     a1["yellow"] = a1["yellow"] + x1["yellow"];
-                                    a1["red"] = 0;
+                                    a1["red"] = a1["red"] + x1["red"];
+                                    //console.log(a1);
                                     break;
                                 case '2':
                                     x2 = count_check(yellowfullcell_2, redfullcell_2);
                                     a2["yellow"] = a2["yellow"] + x2["yellow"];
-                                    a2["red"] = 0;
+                                    a2["red"] = a2["red"] + x2["red"];
+                                    //console.log(a2);
                                     break;
                                 case '3':
                                     x3 = count_check(yellowfullcell_3, redfullcell_3);
                                     a3["yellow"] = a3["yellow"] + x3["yellow"];
-                                    a3["red"] = 0;
+                                    a3["red"] = a3["red"] + x3["red"];
+                                    //console.log(a3);
                                     break;
                                 case '4':
                                     x4 = count_check(yellowfullcell_4, redfullcell_4);
                                     a4["yellow"] = a4["yellow"] + x4["yellow"];
-                                    a4["red"] = 0;
+                                    a4["red"] = a4["red"] + x4["red"];
+                                    //console.log(a4);
                                     break;
                                 case '5':
                                     x5 = count_check(yellowfullcell_5, redfullcell_5);
                                     a5["yellow"] = a5["yellow"] + x5["yellow"];
-                                    a5["red"] = 0;
+                                    a5["red"] = a5["red"] + x5["red"];
+                                    //console.log(a5);
                                     break;
                                 case '6':
                                     x6 = count_check(yellowfullcell_6, redfullcell_6);
                                     a6["yellow"] = a6["yellow"] + x6["yellow"];
-                                    a6["red"] = 0;
+                                    a6["red"] = a6["red"] + x6["red"];
+                                    //console.log(a6);
                                     break;
                                 default:
                                     console.log('sorry, data_x error');
@@ -403,100 +465,98 @@
                             //vérification des lignes pour la mise d'un jeton jaune
                             switch (datay_celly) {
                                 case '1':
-                                    if ((b1["yellow"] > 0) && (src_cell_lastId !== yellowchip)) {
-                                        console.log('nok');
-                                    } else {
-                                        y1 = count_check(yellowfullcell_b1, redfullcell_b1);
-                                        b1["yellow"] = b1["yellow"] + y1["yellow"];
-                                    }
-                                    b1["red"] = 0;
+                                    y1 = count_check(yellowfullcell_b1, redfullcell_b1);
+                                    b1["yellow"] = b1["yellow"] + y1["yellow"];
+                                    b1["red"] = b1["red"] + y1["red"];
+                                    console.log(b1);
                                     break;
                                 case '2':
-                                    if (b2["yellow"] > 0 && src_cell_lastId !== yellowchip) {
-                                        console.log('nok');
-                                    } else {
-                                        y2 = count_check(yellowfullcell_b2, redfullcell_b2);
-                                        b2["yellow"] = b2["yellow"] + y2["yellow"];
-                                    }
-                                    b2["red"] = 0;
+                                    y2 = count_check(yellowfullcell_b2, redfullcell_b2);
+                                    b2["yellow"] = b2["yellow"] + y2["yellow"];
+                                    b2["red"] = b2["red"] + y2["red"];
+                                    console.log(b2);
                                     break;
                                 case '3':
-                                    if (b3["yellow"] > 0 && src_cell_lastId !== yellowchip) {
-                                        console.log('nok');
-                                    } else {
-                                        y3 = count_check(yellowfullcell_b3, redfullcell_b3);
-                                        b3["yellow"] = b3["yellow"] + y3["yellow"];
-                                    }
-                                    b3["red"] = 0;
+                                    y3 = count_check(yellowfullcell_b3, redfullcell_b3);
+                                    b3["yellow"] = b3["yellow"] + y3["yellow"];
+                                    b3["red"] = b3["red"] + y3["red"];
+                                    console.log(b3);
                                     break;
                                 case '4':
-                                    if (b4["yellow"] > 0 && src_cell_lastId !== yellowchip) {
-                                        console.log('nok');
-                                    } else {
-                                        y4 = count_check(yellowfullcell_b4, redfullcell_b4);
-                                        b4["yellow"] = b4["yellow"] + y4["yellow"];
-                                    }
-                                    b4["red"] = 0;
+                                    y4 = count_check(yellowfullcell_b4, redfullcell_b4);
+                                    b4["yellow"] = b4["yellow"] + y4["yellow"];
+                                    b4["red"] = b4["red"] + y4["red"];
+                                    console.log(b4);
                                     break;
                                 case '5':
-                                    if (b5["yellow"] > 0 && src_cell_lastId !== yellowchip) {
-                                        console.log('nok');
-                                    } else {
-                                        y5 = count_check(yellowfullcell_b5, redfullcell_b5);
-                                        b5["yellow"] = b5["yellow"] + y5["yellow"];
-                                    }
-                                    b5["red"] = 0;
+                                    y5 = count_check(yellowfullcell_b5, redfullcell_b5);
+                                    b5["yellow"] = b5["yellow"] + y5["yellow"];
+                                    b5["red"] = b5["red"] + y5["red"];
+                                    console.log(b5);
                                     break;
                                 default:
                                     console.log('sorry, data_y error');
                             }
-
-                            //vérification des diagonales pour la mise d'un jeton jaune
+                            //vÃ©rification des diagonales pour la mise d'un jeton jaune
                             idj = this.getAttribute("id");
                             var Jl;
                             var Jr;
                             Jl = diagonaleL_count(idj, src_cell);
                             Jr = diagonaleR_count(idj, src_cell);
-
+                            
                             break;
 
                         } else {
-                            $(id).attr('src', "{{ asset('bundles/app/images/poker.gif')}}");
+                            $(id).attr('src', "{{ asset('bundles/app/images/poker.png')}}");
+                            $(id).css({
+                                'position': 'relative',
+                                'top': '-1000px',
+                                '-webkit-transform': 'translateY(1000px)',
+                                '-webkit-transition-duration': '1s',
+                            });
+
                             countclick += 1;
                             src_cell = $(id).attr('src');
                             datay_cellr = $(id).attr('data_y');
+                            console.log(datay_cellr);
 
                             //vérification des colonnes pour la mise d'un jeton rouge
                             switch (data_x) {
                                 case '1':
                                     x1 = count_check(yellowfullcell_1, redfullcell_1);
-                                    a1["yellow"] = 0;
+                                    a1["yellow"] = a1["yellow"] + x1["yellow"];
                                     a1["red"] = a1["red"] + x1["red"];
+                                    //console.log(a1);
                                     break;
                                 case '2':
                                     x2 = count_check(yellowfullcell_2, redfullcell_2);
-                                    a2["yellow"] = 0;
+                                    a2["yellow"] = a2["yellow"] + x2["yellow"];
                                     a2["red"] = a2["red"] + x2["red"];
+                                    //console.log(a2);
                                     break;
                                 case '3':
                                     x3 = count_check(yellowfullcell_3, redfullcell_3);
-                                    a3["yellow"] = 0;
+                                    a3["yellow"] = a3["yellow"] + x3["yellow"];
                                     a3["red"] = a3["red"] + x3["red"];
+                                    //console.log(a3);
                                     break;
                                 case '4':
                                     x4 = count_check(yellowfullcell_4, redfullcell_4);
-                                    a4["yellow"] = 0;
+                                    a4["yellow"] = a4["yellow"] + x4["yellow"];
                                     a4["red"] = a4["red"] + x4["red"];
+                                    //console.log(a4);
                                     break;
                                 case '5':
                                     x5 = count_check(yellowfullcell_5, redfullcell_5);
-                                    a5["yellow"] = 0;
+                                    a5["yellow"] = a5["yellow"] + x5["yellow"];
                                     a5["red"] = a5["red"] + x5["red"];
+                                    //console.log(a5);
                                     break;
                                 case '6':
                                     x6 = count_check(yellowfullcell_6, redfullcell_6);
-                                    a6["yellow"] = 0;
+                                    a6["yellow"] = a6["yellow"] + x6["yellow"];
                                     a6["red"] = a6["red"] + x6["red"];
+                                    //console.log(a6);
                                     break;
                                 default:
                                     console.log('sorry, data_x error');
@@ -505,62 +565,44 @@
                             //vérification des lignes pour la mise d'un jeton rouge
                             switch (datay_cellr) {
                                 case '1':
-                                    if ((b1["red"] > 0) && (src_cell_lastId !== redchip)) {
-                                        console.log('ok');
-                                    } else {
-                                        y1 = count_check(yellowfullcell_b1, redfullcell_b1);
-                                        b1["red"] = b1["red"] + y1["red"];
-                                        console.log('nok');
-                                    }
-                                    b1["yellow"] = 0;
+                                    y1 = count_check(yellowfullcell_b1, redfullcell_b1);
+                                    b1["yellow"] = b1["yellow"] + y1["yellow"];
+                                    b1["red"] = b1["red"] + y1["red"];
+                                    console.log(b1);
                                     break;
                                 case '2':
-                                    if ((b2["red"] > 0) && (src_cell_lastId !== redchip)) {
-                                        console.log('nok');
-                                    } else {
-                                        y2 = count_check(yellowfullcell_b2, redfullcell_b2);
-                                        b2["red"] = b2["red"] + y2["red"];
-                                    }
-                                    b2["yellow"] = 0;
+                                    y2 = count_check(yellowfullcell_b2, redfullcell_b2);
+                                    b2["yellow"] = b2["yellow"] + y2["yellow"];
+                                    b2["red"] = b2["red"] + y2["red"];
+                                    console.log(b2);
                                     break;
                                 case '3':
-                                    if ((b3["red"] > 0) && (src_cell_lastId !== redchip)) {
-                                        console.log('nok');
-                                    } else {
-                                        y3 = count_check(yellowfullcell_b3, redfullcell_b3);
-                                        b3["red"] = b3["red"] + y3["red"];
-                                    }
-                                    b3["yellow"] = 0;
+                                    y3 = count_check(yellowfullcell_b3, redfullcell_b3);
+                                    b3["yellow"] = b3["yellow"] + y3["yellow"];
+                                    b3["red"] = b3["red"] + y3["red"];
+                                    console.log(b3);
                                     break;
                                 case '4':
-                                    if ((b4["red"] > 0) && (src_cell_lastId !== redchip)) {
-                                        console.log('nok');
-                                    } else {
-                                        y4 = count_check(yellowfullcell_4, redfullcell_4);
-                                        b4["red"] = b4["red"] + y4["red"];
-                                    }
-                                    b4["yellow"] = 0;
+                                    y4 = count_check(yellowfullcell_4, redfullcell_4);
+                                    b4["yellow"] = b4["yellow"] + y4["yellow"];
+                                    b4["red"] = b4["red"] + y4["red"];
+                                    console.log(b4);
                                     break;
                                 case '5':
-                                    if ((b5["red"] > 0) && (src_cell_lastId !== redchip)) {
-                                        console.log('nok');
-                                    } else {
-                                        y5 = count_check(yellowfullcell_b5, redfullcell_b5);
-                                        b5["red"] = b5["red"] + y5["red"];
-                                    }
-                                    b5["yellow"] = 0;
+                                    y5 = count_check(yellowfullcell_b5, redfullcell_b5);
+                                    b5["yellow"] = b5["yellow"] + y5["yellow"];
+                                    b5["red"] = b5["red"] + y5["red"];
+                                    console.log(b5);
                                     break;
                                 default:
                                     console.log('sorry, data_y error');
                             }
-
-                            //vérification des diagonales pour la mise d'un jeton rouge
+                            //vÃ©rification des diagonales pour la mise d'un jeton rouge
                             idr = this.getAttribute("id");
                             var Rl;
                             var Rr;
                             Rl = diagonaleL_count(idr, src_cell);
                             Rr = diagonaleR_count(idr, src_cell);
-
                             break;
                         }
                     }
@@ -572,7 +614,6 @@
                 if (a1["yellow"] == 4 || a2["yellow"] == 4 || a3["yellow"] == 4 || a4["yellow"] == 4 ||
                         a5["yellow"] == 4 || a6["yellow"] == 4 || b1["yellow"] == 4 || b2["yellow"] == 4 || b3["yellow"] == 4 || b4["yellow"] == 4 ||
                         b5["yellow"] == 4 || Jl == 1 || Jr == 1) {
-                    void window.location.reload();
                     countclick = 0;
                     if (isNaN(scorejP1)) {
                         scorejP1 = 0;
@@ -581,20 +622,24 @@
                     scorejP1++;
                     setCookie('CookScorejP1', scorejP1);
                     alert("Player 1 wins 1 point");
-                    if (scorejP1 == 3) 
-                    {
-                        confirm("Congratulations! Player 1 wins the game!");
+                    if (scorejP1 == 3) {
                         scorejP1 = 0;
                         scorerP2 = 0;
                         setCookie('CookScorejP1', scorejP1);
                         setCookie('CookScorerP2', scorerP2);
                         countclick = 0;
+
+                        $('#popupWin1').modal();
+                        $('#popupWin1 button').on('click', function () {
+                            window.location.reload()
+                        });
+                    } else {
+                        location.reload();
                     }
                 }
                 if (a1["red"] == 4 || a2["red"] == 4 || a3["red"] == 4 || a4["red"] == 4 ||
                         a5["red"] == 4 || a6["red"] == 4 || b1["red"] == 4 || b2["red"] == 4 || b3["red"] == 4 || b4["red"] == 4 ||
                         b5["red"] == 4 || Rl == 1 || Rr == 1) {
-                    void window.location.reload();
                     countclick = 0;
                     if (isNaN(scorerP2)) {
                         scorerP2 = 0;
@@ -602,17 +647,22 @@
                     scorerP2++;
                     setCookie('CookScorerP2', scorerP2);
                     alert("Player 2 wins 1 point");
-                    if (scorerP2 == 3) 
-                    {
-                        //confirm("Congratulations! Player 2 wins the game!");
+                    if (scorerP2 == 3) {
                         scorejP1 = 0;
                         scorerP2 = 0;
-                      
                         setCookie('CookScorejP1', scorejP1);
                         setCookie('CookScorerP2', scorerP2);
                         countclick = 0;
+
+                        $('#popupWin2').modal();
+                        $('#popupWin2 button').on('click', function () {
+                            window.location.reload()
+                        });
+                    } else {
+                        location.reload();
                     }
                 }
+
 
             });
 
