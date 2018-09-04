@@ -24,7 +24,7 @@
         </table>
     </div>
 
-    <div id="popupWin1"class="modal" tabindex="-1" role="dialog">
+  <div id="popupWin1"class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -69,8 +69,8 @@
             </div>
         </div>
     </div>
-
-
+            
+            
 {% endblock %}
 
 {% block javascripts %}
@@ -151,25 +151,25 @@
             if (id == 12 || id == 23 || id == 34 || id == 45) {
                 count_diag = 0;
                 var x = ["12", "23", "34", "45"];
-                for (var i = 0; i < x.length; i++)
-                {
+                for(var i= 0; i < x.length; i++)
+                {   
                     id = x[i];
                     id = String(id);
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
-                    if (src == srcColorCell) {
-                        count_diag++;
-                        if (count_diag == 4) {
-                            return 1;
-                        }
+                    if(src == srcColorCell) {
+			count_diag++;
+                        if (count_diag == 4){
+                        return 1;
+                        } 
                     }
                 }
             }
 
-            if (id == 11 || id == 22 || id == 33 || id == 44 || id == 55) {
+            if(id == 11 || id ==22 || id == 33 || id ==44 || id == 55){
                 count_diag = 0;
                 var x = ["11", "22", "33", "44", "55"];
-                for (var i = 0; i < x.length; i++)
+                for(var i= 0; i < x.length; i++)
                 {
                     id = x[i];
                     last_id = id - 11;
@@ -179,25 +179,25 @@
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
                     last_src = $(Elt_lastid).attr('src');
-
-                    if (src == srcColorCell) {
-
-                        if (count_diag > 0 && last_src !== srcColorCell) {
-                            console.log('nok');
-                        } else {
-                            count_diag++;
-                            if (count_diag == 4) {
-                                return 1;
+                    
+                    if(src == srcColorCell) {
+                        
+                            if (count_diag > 0 && last_src !== srcColorCell){
+                                console.log('nok');
+                            } else {
+                                count_diag++;
+                                if(count_diag == 4) {
+                                    return 1;
+                                } 
                             }
-                        }
                     }
                 }
             }
 
-            if (id == 21 || id == 32 || id == 43 || id == 54 || id == 65) {
+            if(id == 21 || id ==32 || id == 43 || id ==54 || id == 65){
                 count_diag = 0;
                 var x = ["21", "32", "43", "54", "65"];
-                for (var i = 0; i < x.length; i++)
+                for(var i= 0; i < x.length; i++)
                 {
                     id = x[i];
                     last_id = id - 11;
@@ -207,34 +207,34 @@
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
                     last_src = $(Elt_lastid).attr('src');
-
-                    if (src == srcColorCell) {
-
-                        if (count_diag > 0 && last_src !== srcColorCell) {
-                            console.log('nok');
-                        } else {
-                            count_diag++;
-                            if (count_diag == 4) {
-                                return 1;
+                    
+                    if(src == srcColorCell) {
+                        
+                            if (count_diag > 0 && last_src !== srcColorCell){
+                                console.log('nok');
+                            } else {
+                                count_diag++;
+                                if(count_diag == 4) {
+                                    return 1;
+                                } 
                             }
-                        }
                     }
                 }
             }
-            if (id == 31 || id == 42 || id == 53 || id == 64) {
+            if (id == 31 || id ==42 || id == 53 || id == 64){
                 count_diag = 0;
                 var x = ["31", "42", "53", "64"];
-                for (var i = 0; i < x.length; i++)
-                {
+                for(var i= 0; i < x.length; i++)
+                {   
                     id = x[i];
                     id = String(id);
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
-                    if (src == srcColorCell) {
-                        count_diag++;
-                        if (count_diag == 4) {
-                            return 1;
-                        }
+                    if(src == srcColorCell) {
+			count_diag++;
+                        if (count_diag == 4){
+                        return 1;
+                        } 
                     }
                 }
             }
@@ -244,29 +244,29 @@
 
 
 
-        function diagonaleR_count(id, srcColorCell) {
-            if (id == 14 || id == 23 || id == 32 || id == 41) {
+        function diagonaleR_count(id,srcColorCell){
+            if (id == 14 || id ==23 || id == 32 || id == 41){
                 count_diag = 0;
                 var x = ["14", "23", "32", "41"];
-                for (var i = 0; i < x.length; i++)
-                {
+                for(var i= 0; i < x.length; i++)
+                {   
                     id = x[i];
                     id = String(id);
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
-                    if (src == srcColorCell) {
-                        count_diag++;
-                        if (count_diag == 4) {
-                            return 1;
-                        }
+                    if(src == srcColorCell) {
+			count_diag++;
+                        if (count_diag == 4){
+                        return 1;
+                        } 
                     }
                 }
             }
 
-            if (id == 15 || id == 24 || id == 33 || id == 42 || id == 51) {
+            if(id == 15 || id ==24 || id == 33 || id ==42 || id == 51){
                 count_diag = 0;
                 var x = ["15", "24", "33", "42", "51"];
-                for (var i = 0; i < x.length; i++)
+                for(var i= 0; i < x.length; i++)
                 {
                     id = x[i];
                     last_id = id - 9;
@@ -276,25 +276,25 @@
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
                     last_src = $(Elt_lastid).attr('src');
-
-                    if (src == srcColorCell) {
-
-                        if (count_diag > 0 && last_src !== srcColorCell) {
-                            console.log('nok');
-                        } else {
-                            count_diag++;
-                            if (count_diag == 4) {
-                                return 1;
+                    
+                    if(src == srcColorCell) {
+                        
+                            if (count_diag > 0 && last_src !== srcColorCell){
+                                console.log('nok');
+                            } else {
+                                count_diag++;
+                                if(count_diag == 4) {
+                                    return 1;
+                                } 
                             }
-                        }
                     }
                 }
             }
 
-            if (id == 25 || id == 34 || id == 43 || id == 52 || id == 61) {
+            if(id == 25 || id ==34 || id == 43 || id ==52 || id == 61){
                 count_diag = 0;
                 var x = ["25", "34", "43", "52", "61"];
-                for (var i = 0; i < x.length; i++)
+                for(var i= 0; i < x.length; i++)
                 {
                     id = x[i];
                     last_id = id - 9;
@@ -304,34 +304,34 @@
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
                     last_src = $(Elt_lastid).attr('src');
-
-                    if (src == srcColorCell) {
-
-                        if (count_diag > 0 && last_src !== srcColorCell) {
-                            console.log('nok');
-                        } else {
-                            count_diag++;
-                            if (count_diag == 4) {
-                                return 1;
+                    
+                    if(src == srcColorCell) {
+                        
+                            if (count_diag > 0 && last_src !== srcColorCell){
+                                console.log('nok');
+                            } else {
+                                count_diag++;
+                                if(count_diag == 4) {
+                                    return 1;
+                                } 
                             }
-                        }
                     }
                 }
             }
-            if (id == 35 || id == 44 || id == 53 || id == 62) {
+            if (id == 35 || id ==44 || id == 53 || id == 62){
                 count_diag = 0;
                 var x = ["35", "44", "53", "62"];
-                for (var i = 0; i < x.length; i++)
-                {
+                for(var i= 0; i < x.length; i++)
+                {   
                     id = x[i];
                     id = String(id);
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
-                    if (src == srcColorCell) {
-                        count_diag++;
-                        if (count_diag == 4) {
-                            return 1;
-                        }
+                    if(src == srcColorCell) {
+			count_diag++;
+                        if (count_diag == 4){
+                        return 1;
+                        } 
                     }
                 }
             }
@@ -409,6 +409,7 @@
                     last_id = '#' + last_lineIda;
                     last_idR = '#' + last_lineIdaR;
                     var src = $(id).attr('src');
+                    
 
 
                     if (src == nochip) {
@@ -694,7 +695,7 @@
                 if (a1["yellow"] == 4 || a2["yellow"] == 4 || a3["yellow"] == 4 || a4["yellow"] == 4 ||
                         a5["yellow"] == 4 || a6["yellow"] == 4 || b1["yellow"] == 4 || b2["yellow"] == 4 || b3["yellow"] == 4 || b4["yellow"] == 4 ||
                         b5["yellow"] == 4 || Jl == 1 || Jr == 1) {
-                    void window.location.reload();
+                    
                     countclick = 0;
                     if (isNaN(scorejP1)) {
                         scorejP1 = 0;
@@ -703,8 +704,8 @@
                     scorejP1++;
                     setCookie('CookScorejP1', scorejP1);
                     alert("Player 1 wins 1 point");
-                    if (scorejP1 == 3) {
-
+                    if (scorejP1 === 3) {
+                        
                         scorejP1 = 0;
                         scorerP2 = 0;
                         setCookie('CookScorejP1', scorejP1);
@@ -721,7 +722,7 @@
                 if (a1["red"] == 4 || a2["red"] == 4 || a3["red"] == 4 || a4["red"] == 4 ||
                         a5["red"] == 4 || a6["red"] == 4 || b1["red"] == 4 || b2["red"] == 4 || b3["red"] == 4 || b4["red"] == 4 ||
                         b5["red"] == 4 || Rl == 1 || Rr == 1) {
-                    void window.location.reload();
+                    
                     countclick = 0;
                     if (isNaN(scorerP2)) {
                         scorerP2 = 0;
@@ -729,8 +730,8 @@
                     scorerP2++;
                     setCookie('CookScorerP2', scorerP2);
                     alert("Player 2 wins 1 point");
-                    if (scorerP2 == 3) {
-
+                    if (scorerP2 === 3) {
+                        
                         scorejP1 = 0;
                         scorerP2 = 0;
                         setCookie('CookScorejP1', scorejP1);
