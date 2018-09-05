@@ -301,17 +301,15 @@
         function ligne_count(y, srcColorCell) {
             count_diag = 0;
             var x = [y + 10, y + 20, y + 30, y + 40, y + 50, y + 60];
-            console.log(x);
+
             for (var i = 0; i < x.length; i++)
             {
                 id = x[i];
                 id = String(id);
                 Elt_id = '#' + id;
                 src = $(Elt_id).attr('src');
-                console.log(src);
                 if (src == srcColorCell) {
                     count_diag++;
-                    console.log(count_diag);
                     if (count_diag == 4) {
                         return 1;
                     }
