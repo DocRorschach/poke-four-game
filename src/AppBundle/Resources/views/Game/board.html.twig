@@ -24,7 +24,7 @@
         </table>
     </div>
 
-  <div id="popupWin1"class="modal" tabindex="-1" role="dialog">
+    <div id="popupWin1"class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -69,8 +69,8 @@
             </div>
         </div>
     </div>
-            
-            
+
+
 {% endblock %}
 
 {% block javascripts %}
@@ -81,52 +81,40 @@
         var tabcellx = new Array();
         var scorejP1;
         var scorerP2;
-
         var a1 = {"yellow": 0, "red": 0};
         var b1 = {"yellow": 0, "red": 0};
         var yellowfullcell_1 = 0;
         var redfullcell_1 = 0;
         var yellowfullcell_b1 = 0;
         var redfullcell_b1 = 0;
-
-
         var a2 = {"yellow": 0, "red": 0};
         var b2 = {"yellow": 0, "red": 0};
         var yellowfullcell_2 = 0;
         var redfullcell_2 = 0;
         var yellowfullcell_b2 = 0;
         var redfullcell_b2 = 0;
-
-
         var a3 = {"yellow": 0, "red": 0};
         var b3 = {"yellow": 0, "red": 0};
         yellowfullcell_3 = 0;
         redfullcell_3 = 0;
         var yellowfullcell_b3 = 0;
         var redfullcell_b3 = 0;
-
-
         var a4 = {"yellow": 0, "red": 0};
         var b4 = {"yellow": 0, "red": 0};
         yellowfullcell_4 = 0;
         redfullcell_4 = 0;
         var yellowfullcell_b4 = 0;
         var redfullcell_b4 = 0;
-
-
         var a5 = {"yellow": 0, "red": 0};
         var b5 = {"yellow": 0, "red": 0};
         yellowfullcell_5 = 0;
         redfullcell_5 = 0;
         var yellowfullcell_b5 = 0;
         var redfullcell_b5 = 0;
-
-
         a6 = {"yellow": 0, "red": 0};
         yellowfullcell_6 = 0;
         redfullcell_6 = 0;
         var src_couleur;
-
         function count_check(yellowfullcell_x, redfullcell_x) {
             if (src_cell == yellowchip) {
                 yellowfullcell_x = parseInt(yellowfullcell_x, 10);
@@ -149,193 +137,190 @@
 
         function diagonaleL_count(id, srcColorCell) {
             if (id == 12 || id == 23 || id == 34 || id == 45) {
-                count_diag = 0;
+                count_diag1 = 0;
                 var x = ["12", "23", "34", "45"];
-                for(var i= 0; i < x.length; i++)
-                {   
+                for (var i = 0; i < x.length; i++)
+                {
                     id = x[i];
                     id = String(id);
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
-                    if(src == srcColorCell) {
-			count_diag++;
-                        if (count_diag == 4){
-                        return 1;
-                        } 
+                    if (src == srcColorCell) {
+                        count_diag1++;
+                        if (count_diag1 == 4) {
+                            return 1;
+                        }
+                    } else {
+                        count_diag1 = 0;
                     }
                 }
             }
 
-            if(id == 11 || id ==22 || id == 33 || id ==44 || id == 55){
-                count_diag = 0;
+            if (id == 11 || id == 22 || id == 33 || id == 44 || id == 55) {
+                count_diag2 = 0;
                 var x = ["11", "22", "33", "44", "55"];
-                for(var i= 0; i < x.length; i++)
+                for (var i = 0; i < x.length; i++)
                 {
                     id = x[i];
-                    last_id = id - 11;
-                    last_id = String(last_id);
-                    Elt_lastid = '#' + last_id;
                     id = String(id);
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
-                    last_src = $(Elt_lastid).attr('src');
-                    
-                    if(src == srcColorCell) {
-                        
-                            if (count_diag > 0 && last_src !== srcColorCell){
-                                console.log('nok');
-                            } else {
-                                count_diag++;
-                                if(count_diag == 4) {
-                                    return 1;
-                                } 
-                            }
+                    if (src == srcColorCell) {
+                        count_diag2++;
+                        if (count_diag2 == 4) {
+                            return 1;
+                        }
+                    } else {
+                        count_diag2 = 0;
                     }
+
                 }
             }
 
-            if(id == 21 || id ==32 || id == 43 || id ==54 || id == 65){
-                count_diag = 0;
+            if (id == 21 || id == 32 || id == 43 || id == 54 || id == 65) {
+                count_diag3 = 0;
                 var x = ["21", "32", "43", "54", "65"];
-                for(var i= 0; i < x.length; i++)
+                for (var i = 0; i < x.length; i++)
                 {
                     id = x[i];
-                    last_id = id - 11;
-                    last_id = String(last_id);
-                    Elt_lastid = '#' + last_id;
                     id = String(id);
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
-                    last_src = $(Elt_lastid).attr('src');
-                    
-                    if(src == srcColorCell) {
-                        
-                            if (count_diag > 0 && last_src !== srcColorCell){
-                                console.log('nok');
-                            } else {
-                                count_diag++;
-                                if(count_diag == 4) {
-                                    return 1;
-                                } 
-                            }
+                    if (src == srcColorCell) {
+                        count_diag3++;
+                        if (count_diag3 == 4) {
+                            return 1;
+                        }
+                    } else {
+                        count_diag3 = 0;
                     }
                 }
             }
-            if (id == 31 || id ==42 || id == 53 || id == 64){
-                count_diag = 0;
+            if (id == 31 || id == 42 || id == 53 || id == 64) {
+                count_diag4 = 0;
                 var x = ["31", "42", "53", "64"];
-                for(var i= 0; i < x.length; i++)
-                {   
+                for (var i = 0; i < x.length; i++)
+                {
                     id = x[i];
                     id = String(id);
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
-                    if(src == srcColorCell) {
-			count_diag++;
-                        if (count_diag == 4){
-                        return 1;
-                        } 
+                    if (src == srcColorCell) {
+                        count_diag4++;
+                        if (count_diag4 == 4) {
+                            return 1;
+                        }
+                    } else {
+                        count_diag4 = 0;
                     }
                 }
             }
         }
 
-
-
-
-
-        function diagonaleR_count(id,srcColorCell){
-            if (id == 14 || id ==23 || id == 32 || id == 41){
-                count_diag = 0;
+        function diagonaleR_count(id, srcColorCell) {
+            if (id == 14 || id == 23 || id == 32 || id == 41) {
+                count_diag5 = 0;
                 var x = ["14", "23", "32", "41"];
-                for(var i= 0; i < x.length; i++)
-                {   
+                for (var i = 0; i < x.length; i++)
+                {
                     id = x[i];
                     id = String(id);
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
-                    if(src == srcColorCell) {
-			count_diag++;
-                        if (count_diag == 4){
-                        return 1;
-                        } 
+                    if (src == srcColorCell) {
+                        count_diag5++;
+                        if (count_diag5 == 4) {
+                            return 1;
+                        }
+                    } else {
+                        count_diag5 = 0;
                     }
                 }
             }
 
-            if(id == 15 || id ==24 || id == 33 || id ==42 || id == 51){
-                count_diag = 0;
+            if (id == 15 || id == 24 || id == 33 || id == 42 || id == 51) {
+                count_diag6 = 0;
                 var x = ["15", "24", "33", "42", "51"];
-                for(var i= 0; i < x.length; i++)
+                for (var i = 0; i < x.length; i++)
                 {
                     id = x[i];
-                    last_id = id - 9;
-                    last_id = String(last_id);
-                    Elt_lastid = '#' + last_id;
                     id = String(id);
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
-                    last_src = $(Elt_lastid).attr('src');
-                    
-                    if(src == srcColorCell) {
-                        
-                            if (count_diag > 0 && last_src !== srcColorCell){
-                                console.log('nok');
-                            } else {
-                                count_diag++;
-                                if(count_diag == 4) {
-                                    return 1;
-                                } 
-                            }
+                    if (src == srcColorCell) {
+                        count_diag6++;
+                        if (count_diag6 == 4) {
+                            return 1;
+                        }
+                    } else {
+                        count_diag6 = 0;
                     }
                 }
             }
-
-            if(id == 25 || id ==34 || id == 43 || id ==52 || id == 61){
-                count_diag = 0;
+            if (id == 25 || id == 34 || id == 43 || id == 52 || id == 61) {
+                count_diag7 = 0;
                 var x = ["25", "34", "43", "52", "61"];
-                for(var i= 0; i < x.length; i++)
+                for (var i = 0; i < x.length; i++)
                 {
                     id = x[i];
-                    last_id = id - 9;
-                    last_id = String(last_id);
-                    Elt_lastid = '#' + last_id;
                     id = String(id);
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
-                    last_src = $(Elt_lastid).attr('src');
-                    
-                    if(src == srcColorCell) {
-                        
-                            if (count_diag > 0 && last_src !== srcColorCell){
-                                console.log('nok');
-                            } else {
-                                count_diag++;
-                                if(count_diag == 4) {
-                                    return 1;
-                                } 
-                            }
+
+                    if (src == srcColorCell) {
+                        count_diag7++;
+                        if (count_diag7 == 4) {
+                            return 1;
+                        }
+                    } else {
+                        count_diag7 = 0;
                     }
                 }
             }
-            if (id == 35 || id ==44 || id == 53 || id == 62){
-                count_diag = 0;
+            if (id == 35 || id == 44 || id == 53 || id == 62) {
+                count_diag8 = 0;
                 var x = ["35", "44", "53", "62"];
-                for(var i= 0; i < x.length; i++)
-                {   
+                for (var i = 0; i < x.length; i++)
+                {
                     id = x[i];
                     id = String(id);
                     Elt_id = '#' + id;
                     src = $(Elt_id).attr('src');
-                    if(src == srcColorCell) {
-			count_diag++;
-                        if (count_diag == 4){
-                        return 1;
-                        } 
+                    if (src == srcColorCell) {
+                        count_diag8++;
+                        if (count_diag8 == 4) {
+                            return 1;
+                        }
+                    } else {
+                        count_diag8 = 0;
                     }
                 }
             }
         }
+
+        function ligne_count(y, srcColorCell) {
+            count_diag = 0;
+            var x = [y + 10, y + 20, y + 30, y + 40, y + 50, y + 60];
+            console.log(x);
+            for (var i = 0; i < x.length; i++)
+            {
+                id = x[i];
+                id = String(id);
+                Elt_id = '#' + id;
+                src = $(Elt_id).attr('src');
+                console.log(src);
+                if (src == srcColorCell) {
+                    count_diag++;
+                    console.log(count_diag);
+                    if (count_diag == 4) {
+                        return 1;
+                    }
+                } else {
+                    count_diag = 0;
+                }
+            }
+        }
+
 
         function frame() {
             if (pos == id) {
@@ -345,16 +330,11 @@
                 elem.style.top = pos + 'px';
             }
         }
-
-
-
         function setCookie(sName, sValue) {
             var today = new Date(), expires = new Date();
             expires.setTime(today.getTime() + (365 * 24 * 60 * 60 * 1000));
             document.cookie = sName + "=" + encodeURIComponent(sValue) + ";expires=" + expires.toGMTString();
         }
-
-
         function getCookie(sName) {
             var oRegex = new RegExp("(?:; )?" + sName + "=([^;]*);?");
             if (oRegex.test(document.cookie)) {
@@ -363,23 +343,14 @@
                 return null;
             }
         }
-
-
-
         //prise en compte de la page DOM par JS
         $(document).ready(function () {
-
             valCookScorejP1 = getCookie('CookScorejP1');
             $("#iDscorejP1").attr('value', valCookScorejP1);
             scorejP1 = Number(valCookScorejP1);
-
-
             valCookScorerP2 = getCookie('CookScorerP2');
             $("#iDscorerP2").attr('value', valCookScorerP2);
             scorerP2 = Number(valCookScorerP2);
-
-
-
             //L'origine du référentiel cartésien du "board" du jeu est située en haut à gauche.
             countclick = 0;
             var row = 5;
@@ -387,8 +358,6 @@
             yellowchip = '/poke-four-game/web/bundles/app/images/pokej.png';
             redchip = '/poke-four-game/web/bundles/app/images/poker.png';
             nochip = '/poke-four-game/web/bundles/app/images/nochip.GIF';
-
-
             $(".cell").click(function () {
                 data_x = this.getAttribute("data_x");
                 id_top = data_x + 1;
@@ -396,21 +365,11 @@
                 id_top = parseInt(id_top, 10);
                 id_bottom = parseInt(id_bottom, 10);
                 var idx;
-
-
                 //pour placer le jeton sur la première cellule libre de la colonne
                 for (idx = id_bottom; idx >= id_top; idx--) {
-
                     var ida = idx.toString();
-                    var last_lineIda = ida - 10;
-                    var last_lineIdaR = idx + 10;
-                    var last_lineIdaR = last_lineIdaR.toString();
                     id = '#' + ida;
-                    last_id = '#' + last_lineIda;
-                    last_idR = '#' + last_lineIdaR;
                     var src = $(id).attr('src');
-                    
-
 
                     if (src == nochip) {
                         if (countclick % 2 == 0) {
@@ -423,13 +382,8 @@
                             });
                             countclick += 1;
                             src_cell = $(id).attr('src');
-                            src_cell_lastId = $(last_id).attr('src');
-                            src_cell_lastIdR = $(last_idR).attr('src');
-                            console.log(src_cell_lastIdR);
                             datay_celly = $(id).attr('data_y');
                             datax_cellx = $(id).attr('data_x');
-
-
                             //vérification des colonnes pour la mise d'un jeton jaune
                             switch (data_x) {
                                 case '1':
@@ -465,93 +419,33 @@
                                 default:
                                     console.log('sorry, data_x error');
                             }
-
-
                             //vérification des lignes pour la mise d'un jeton jaune
                             switch (datay_celly) {
                                 case '1':
-                                    if ((b1["yellow"] > 0) && (src_cell_lastId !== yellowchip)) {
-                                        if (src_cell_lastIdR !== yellowchip) {
-                                            console.log('nok');
-                                        } else {
-                                            y1 = count_check(yellowfullcell_b1, redfullcell_b1);
-                                            b1["yellow"] = b1["yellow"] + y1["yellow"];
-                                        }
-                                    } else {
-                                        y1 = count_check(yellowfullcell_b1, redfullcell_b1);
-                                        b1["yellow"] = b1["yellow"] + y1["yellow"];
-                                    }
-                                    b1["red"] = 0;
+                                    Ly = ligne_count(1, yellowchip);
                                     break;
                                 case '2':
-                                    if (b2["yellow"] > 0 && (src_cell_lastId !== yellowchip)) {
-                                        if (src_cell_lastIdR !== yellowchip) {
-                                            console.log('nok');
-                                        } else {
-                                            y2 = count_check(yellowfullcell_b2, redfullcell_b2);
-                                            b2["yellow"] = b2["yellow"] + y2["yellow"];
-                                        }
-                                    } else {
-                                        y2 = count_check(yellowfullcell_b2, redfullcell_b2);
-                                        b2["yellow"] = b2["yellow"] + y2["yellow"];
-                                    }
-                                    b2["red"] = 0;
+                                    Ly = ligne_count(2, yellowchip);
                                     break;
                                 case '3':
-                                    if (b3["yellow"] > 0 && (src_cell_lastId !== yellowchip)) {
-                                        if (src_cell_lastIdR !== yellowchip) {
-                                            console.log('nok');
-                                        } else {
-                                            y3 = count_check(yellowfullcell_b3, redfullcell_b3);
-                                            b3["yellow"] = b3["yellow"] + y3["yellow"];
-                                        }
-                                    } else {
-                                        y3 = count_check(yellowfullcell_b3, redfullcell_b3);
-                                        b3["yellow"] = b3["yellow"] + y3["yellow"];
-                                    }
-                                    b3["red"] = 0;
+                                    Ly = ligne_count(3, yellowchip);
                                     break;
                                 case '4':
-                                    if (b4["yellow"] > 0 && (src_cell_lastId !== yellowchip)) {
-                                        if (src_cell_lastIdR !== yellowchip) {
-                                            console.log('nok');
-                                        } else {
-                                            y4 = count_check(yellowfullcell_b4, redfullcell_b4);
-                                            b4["yellow"] = b4["yellow"] + y4["yellow"];
-                                        }
-                                    } else {
-                                        y4 = count_check(yellowfullcell_b4, redfullcell_b4);
-                                        b4["yellow"] = b4["yellow"] + y4["yellow"];
-                                    }
-                                    b4["red"] = 0;
+                                    Ly = ligne_count(4, yellowchip);
                                     break;
                                 case '5':
-                                    if (b5["yellow"] > 0 && (src_cell_lastId !== yellowchip)) {
-                                        if (src_cell_lastIdR !== yellowchip) {
-                                            console.log('nok');
-                                        } else {
-                                            y5 = count_check(yellowfullcell_b5, redfullcell_b5);
-                                            b5["yellow"] = b5["yellow"] + y5["yellow"];
-                                        }
-                                    } else {
-                                        y5 = count_check(yellowfullcell_b5, redfullcell_b5);
-                                        b5["yellow"] = b5["yellow"] + y5["yellow"];
-                                    }
-                                    b5["red"] = 0;
+                                    Ly = ligne_count(5, yellowchip);
                                     break;
                                 default:
                                     console.log('sorry, data_y error');
                             }
-
                             //vérification des diagonales pour la mise d'un jeton jaune
                             idj = this.getAttribute("id");
                             var Jl;
                             var Jr;
-                            Jl = diagonaleL_count(idj, src_cell);
-                            Jr = diagonaleR_count(idj, src_cell);
-
+                            Dlty = diagonaleL_count(idj, src_cell);
+                            Drty = diagonaleR_count(idj, src_cell);
                             break;
-
                         } else {
                             $(id).attr('src', "{{ asset('bundles/app/images/poker.png')}}");
                             $(id).css({
@@ -563,7 +457,6 @@
                             countclick += 1;
                             src_cell = $(id).attr('src');
                             datay_cellr = $(id).attr('data_y');
-
                             //vérification des colonnes pour la mise d'un jeton rouge
                             switch (data_x) {
                                 case '1':
@@ -599,103 +492,41 @@
                                 default:
                                     console.log('sorry, data_x error');
                             }
-
                             //vérification des lignes pour la mise d'un jeton rouge
                             switch (datay_cellr) {
                                 case '1':
-                                    if ((b1["red"] > 0) && (src_cell_lastId !== redchip)) {
-                                        if (src_cell_lastIdR !== redchip) {
-                                            console.log('nok');
-                                        } else {
-                                            y1 = count_check(yellowfullcell_b1, redfullcell_b1);
-                                            b1["red"] = b1["red"] + y1["red"];
-                                        }
-                                    } else {
-                                        y1 = count_check(yellowfullcell_b1, redfullcell_b1);
-                                        b1["red"] = b1["red"] + y1["red"];
-                                        console.log('nok');
-                                    }
-                                    b1["yellow"] = 0;
+                                    Lr = ligne_count(1, redchip);
                                     break;
                                 case '2':
-                                    if ((b2["red"] > 0) && (src_cell_lastId !== redchip)) {
-                                        if (src_cell_lastIdR !== redchip) {
-                                            console.log('nok');
-                                        } else {
-                                            y2 = count_check(yellowfullcell_b2, redfullcell_b2);
-                                            b2["red"] = b2["red"] + y2["red"];
-                                        }
-                                    } else {
-                                        y2 = count_check(yellowfullcell_b2, redfullcell_b2);
-                                        b2["red"] = b2["red"] + y2["red"];
-                                    }
-                                    b2["yellow"] = 0;
+                                    Lr = ligne_count(2, redchip);
                                     break;
                                 case '3':
-                                    if ((b3["red"] > 0) && (src_cell_lastId !== redchip)) {
-                                        if (src_cell_lastIdR !== redchip) {
-                                            console.log('nok');
-                                        } else {
-                                            y3 = count_check(yellowfullcell_b3, redfullcell_b3);
-                                            b3["red"] = b3["red"] + y3["red"];
-                                        }
-                                    } else {
-                                        y3 = count_check(yellowfullcell_b3, redfullcell_b3);
-                                        b3["red"] = b3["red"] + y3["red"];
-                                    }
-                                    b3["yellow"] = 0;
+                                    Lr = ligne_count(3, redchip);
                                     break;
                                 case '4':
-                                    if ((b4["red"] > 0) && (src_cell_lastId !== redchip)) {
-                                        if (src_cell_lastIdR !== redchip) {
-                                            console.log('nok');
-                                        } else {
-                                            y4 = count_check(yellowfullcell_b4, redfullcell_b4);
-                                            b4["red"] = b4["red"] + y4["red"];
-                                        }
-                                    } else {
-                                        y4 = count_check(yellowfullcell_4, redfullcell_4);
-                                        b4["red"] = b4["red"] + y4["red"];
-                                    }
-                                    b4["yellow"] = 0;
+                                    Lr = ligne_count(4, redchip);
                                     break;
                                 case '5':
-                                    if ((b5["red"] > 0) && (src_cell_lastId !== redchip)) {
-                                        if (src_cell_lastIdR !== redchip) {
-                                            console.log('nok');
-                                        } else {
-                                            y5 = count_check(yellowfullcell_b5, redfullcell_b5);
-                                            b5["red"] = b5["red"] + y5["red"];
-                                        }
-                                    } else {
-                                        y5 = count_check(yellowfullcell_b5, redfullcell_b5);
-                                        b5["red"] = b5["red"] + y5["red"];
-                                    }
-                                    b5["yellow"] = 0;
+                                    Lr = ligne_count(5, redchip);
                                     break;
                                 default:
                                     console.log('sorry, data_y error');
                             }
-
                             //vérification des diagonales pour la mise d'un jeton rouge
                             idr = this.getAttribute("id");
                             var Rl;
                             var Rr;
-                            Rl = diagonaleL_count(idr, src_cell);
-                            Rr = diagonaleR_count(idr, src_cell);
-
+                            Dltr = diagonaleL_count(idr, src_cell);
+                            Drtr = diagonaleR_count(idr, src_cell);
                             break;
                         }
                     }
                 }
-
-
                 //vérification victoire
-
                 if (a1["yellow"] == 4 || a2["yellow"] == 4 || a3["yellow"] == 4 || a4["yellow"] == 4 ||
                         a5["yellow"] == 4 || a6["yellow"] == 4 || b1["yellow"] == 4 || b2["yellow"] == 4 || b3["yellow"] == 4 || b4["yellow"] == 4 ||
-                        b5["yellow"] == 4 || Jl == 1 || Jr == 1) {
-                    
+                        b5["yellow"] == 4 || Dlty == 1 || Drty == 1 || Ly == 1) {
+
                     countclick = 0;
                     if (isNaN(scorejP1)) {
                         scorejP1 = 0;
@@ -705,7 +536,7 @@
                     setCookie('CookScorejP1', scorejP1);
                     alert("Player 1 wins 1 point");
                     if (scorejP1 === 3) {
-                        
+
                         scorejP1 = 0;
                         scorerP2 = 0;
                         setCookie('CookScorejP1', scorejP1);
@@ -721,8 +552,8 @@
                 }
                 if (a1["red"] == 4 || a2["red"] == 4 || a3["red"] == 4 || a4["red"] == 4 ||
                         a5["red"] == 4 || a6["red"] == 4 || b1["red"] == 4 || b2["red"] == 4 || b3["red"] == 4 || b4["red"] == 4 ||
-                        b5["red"] == 4 || Rl == 1 || Rr == 1) {
-                    
+                        b5["red"] == 4 || Dltr == 1 || Drtr == 1 || Lr == 1) {
+
                     countclick = 0;
                     if (isNaN(scorerP2)) {
                         scorerP2 = 0;
@@ -731,7 +562,7 @@
                     setCookie('CookScorerP2', scorerP2);
                     alert("Player 2 wins 1 point");
                     if (scorerP2 === 3) {
-                        
+
                         scorejP1 = 0;
                         scorerP2 = 0;
                         setCookie('CookScorejP1', scorejP1);
@@ -745,9 +576,7 @@
                         location.reload();
                     }
                 }
-
             });
-
             $("#clear").click(function () {
                 scorejP1 = 0;
                 scorerP2 = 0;
@@ -756,7 +585,6 @@
                 countclick = 0;
             });
         });
-
     </script>
 
 
