@@ -11,7 +11,7 @@ use \Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="game")
+ * @ORM\Table(name="poke_game")
  */
 class Game  {
     

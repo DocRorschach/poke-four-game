@@ -17,7 +17,7 @@ class Board {
         $this->initializeCells();
     }
 
-    public function getCells(): array {
+    public function getCells() {
         return $this->cells;
     }
 
